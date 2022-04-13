@@ -26,7 +26,7 @@ module.exports = {
         'azure': '#3D55B0',
       },
       fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        sans: ['Montserrat', 'sans-serif'],
       },
     },
   },
