@@ -27,6 +27,10 @@ module.exports = {
       },
       fontFamily: {
         sans: ['Montserrat', 'sans-serif'],
+        train: ['Train One', 'cursive'],
+      },
+      width: {
+        '180': '180px',
       },
     },
   },
