@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'silver': '#BFBFBF',
         'alabaster': '#F9F9F9',
         'seashell': '#F1F1F1',
         'mercury': '#E8E8E8',
@@ -29,8 +30,17 @@ module.exports = {
         sans: ['Montserrat', 'sans-serif'],
         train: ['Train One', 'cursive'],
       },
+      fontSize: {
+        'x': '22px',
+      },
       width: {
         '180': '180px',
+      },
+      borderRadius: {
+        'x': '10px',
+      },
+      boxShadow: {
+        'main': '0px 15px 30px rgba(0, 0, 0, 0.15)',
       },
     },
   },
