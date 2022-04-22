@@ -1,7 +1,8 @@
-<div class="flex justify-center items-center flex-col h-screen w-full">
+<%# -----Meeting section----- %>
+<div class="flex justify-center items-center flex-col h-screen w-full mt-14">
   <div class="flex flex-col sm:flex-row justify-between items-center w-4/6 text-brandy-rose mb-5">
     <h1 class="uppercase font-train text-5xl">Break'n'build</h1>
-    <p class="uppercase font-sans font-medium text-xl w-64">У нас самые крутые инструменты</p>
+    <p class="uppercase font-sans font-medium text-xl w-64">У нас самые качественные инструменты</p>
   </div>
   <div class="flex items-center justify-center relative w-full h-80"> <%#first:opacity-50%>
     <img class="w-[29%] opacity-60 absolute left-5" src="https://wallpaperaccess.com/full/463527.jpg" alt="">
@@ -29,12 +30,77 @@
   </div>
 </div>
 
-<div class="mb-10 flex items-center justify-center bg-brown h-12 w-full">
+<%# -----Novelties section----- %>
+<div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
   <div class="flex items-center justify-between w-4/6">
-    <span class="relative uppercase font-sans font-bold text-2xl text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-[4px] before:bg-brown before:absolute before:left-0 before:top-10">Новинки</span>
-    <a href="" class="uppercase font-sans font-regular text-sm text-white">Смотреть все</a>
+    <span class="relative uppercase font-sans font-bold text-x text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-[4px] before:bg-brown before:absolute before:left-0 before:top-10">Новинки</span>
+    <%=link_to "Смотреть все", root_path, class:"uppercase font-sans font-regular text-sm text-white hover:underline" %>
   </div>
 </div>
-<%# relative
-          after:block after:absolute after:h-px after:w-4 after:bg-apple-blossom after:-left-5relative
-          after:block after:absolute after:h-px after:w-4 after:bg-apple-blossom after:-left-5 %>
+<%# -----Novelties products----- %>
+<div class="flex items-center justify-center">
+  <div class="flex items-center justify-between w-4/6">
+    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
+      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
+      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+        <span class="font-sans font-light text-base">Валик</span>
+        <span class="font-sans font-regular text-xl">5000 тг</span>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
+      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
+      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+        <span class="font-sans font-light text-base">Валик</span>
+        <span class="font-sans font-regular text-xl">5000 тг</span>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
+      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
+      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+        <span class="font-sans font-light text-base">Валик</span>
+        <span class="font-sans font-regular text-xl">5000 тг</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# -----Bestsellers section----- %>
+<div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
+  <div class="flex items-center justify-between w-4/6">
+    <span class="relative uppercase font-sans font-bold text-x text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-[4px] before:bg-brown before:absolute before:left-0 before:top-10">Бестселлер</span>
+    <%=link_to "Смотреть все", root_path, class:"uppercase font-sans font-regular text-sm text-white hover:underline" %>
+  </div>
+</div>
+<%# -----Bestsellers products----- %>
+<div class="flex items-center justify-center">
+  <div class="flex items-center justify-between w-4/6">
+    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
+      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
+      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+        <span class="font-sans font-light text-base">Валик</span>
+        <span class="font-sans font-regular text-xl">5000 тг</span>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
+      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
+      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+        <span class="font-sans font-light text-base">Валик</span>
+        <span class="font-sans font-regular text-xl">5000 тг</span>
+      </div>
+    </div>
+    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
+      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
+      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+        <span class="font-sans font-light text-base">Валик</span>
+        <span class="font-sans font-regular text-xl">5000 тг</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%# -----About us section----- %>
+<div class="flex items-center justify-center my-10 border-y border-solid border-dusty-gray">
+  <div class="flex items-center w-4/6 font-bold text-downriver text-x uppercase">
+    <span>О нас</span>
+  </div>
+</div>
