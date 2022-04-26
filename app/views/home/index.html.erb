@@ -1,10 +1,10 @@
 <%# -----Meeting section----- %>
-<div class="flex justify-center items-center flex-col h-screen w-full mt-14">
+<div class="flex justify-center items-center flex-col h-screen w-full">
   <div class="flex flex-col sm:flex-row justify-between items-center w-4/6 text-brandy-rose mb-5">
     <h1 class="uppercase font-train text-5xl">Break'n'build</h1>
     <p class="uppercase font-sans font-medium text-xl w-64">У нас самые качественные инструменты</p>
   </div>
-  <div class="flex items-center justify-center relative w-full h-80"> <%#first:opacity-50%>
+  <div class="flex items-center justify-center relative w-full h-80">
     <img class="w-[29%] opacity-60 absolute left-5" src="https://wallpaperaccess.com/full/463527.jpg" alt="">
     <img class="w-[31%] opacity-[.82] absolute left-20 z-10" src="https://wallpaperaccess.com/full/463527.jpg" alt="">
     <img class="w-1/3 absolute z-20" src="https://wallpaperaccess.com/full/463527.jpg" alt="">
@@ -24,7 +24,7 @@
       link_to "Открыть каталог", root_path,
         class:"bg-transparent border border-dusty-gray border-solid " \
               "rounded-md font-sans font-bold text-2xl " \
-              "text-downriver uppercase px-2 py-3"
+              "text-downriver uppercase px-5 py-3"
     %>
     <div class="h-px w-20 bg-gradient-to-r from-dusty-gray to-transparent"></div>
   </div>
@@ -33,11 +33,11 @@
 <%# -----Novelties section----- %>
 <div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
   <div class="flex items-center justify-between w-4/6">
-    <span class="relative uppercase font-sans font-bold text-x text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-[4px] before:bg-brown before:absolute before:left-0 before:top-10">Новинки</span>
+    <span class="relative uppercase font-sans font-bold text-2xl text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-[4px] before:bg-brown before:absolute before:left-0 before:top-10">Новинки</span>
     <%=link_to "Смотреть все", root_path, class:"uppercase font-sans font-regular text-sm text-white hover:underline" %>
   </div>
 </div>
-<%# -----Novelties products----- %>
+
 <div class="flex items-center justify-center">
   <div class="flex items-center justify-between w-4/6">
     <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
@@ -67,11 +67,11 @@
 <%# -----Bestsellers section----- %>
 <div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
   <div class="flex items-center justify-between w-4/6">
-    <span class="relative uppercase font-sans font-bold text-x text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-[4px] before:bg-brown before:absolute before:left-0 before:top-10">Бестселлер</span>
+    <span class="relative uppercase font-sans font-bold text-2xl text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-[4px] before:bg-brown before:absolute before:left-0 before:top-10">Бестселлер</span>
     <%=link_to "Смотреть все", root_path, class:"uppercase font-sans font-regular text-sm text-white hover:underline" %>
   </div>
 </div>
-<%# -----Bestsellers products----- %>
+
 <div class="flex items-center justify-center">
   <div class="flex items-center justify-between w-4/6">
     <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]"> <%# Product card %>
@@ -99,8 +99,48 @@
 </div>
 
 <%# -----About us section----- %>
-<div class="flex items-center justify-center my-10 border-y border-solid border-dusty-gray">
-  <div class="flex items-center w-4/6 font-bold text-downriver text-x uppercase">
-    <span>О нас</span>
+<div class="bg-alabaster">
+  <div class="flex items-center justify-center mt-10 border-y border-solid border-dusty-gray shadow-[0px_5px_30px_rgba(0,0,0,0.15)] h-12 bg-alabaster">
+    <div class="flex items-center w-4/6 font-bold text-downriver text-2xl uppercase">
+      <span>О нас</span>
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center py-24">
+    <div class="flex items-center justify-between w-4/5">
+      <span class="text-azure text-lg w-[42%]">Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным. Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным.</span>
+      <img class="rounded-x shadow-about-right skew-x-[-.4deg]" src="https://picsum.photos/seed/1/560/300" alt="">
+    </div>
+  </div>
+
+  <div class="flex items-center justify-center bg-seashell py-24">
+    <div class="flex items-center justify-between w-4/5">
+      <img class="rounded-x shadow-about-left skew-x-[.4deg]" src="https://picsum.photos/seed/2/560/300" alt="">
+      <span class="text-azure text-lg w-[42%]">Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным. Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным.</span>
+    </div>
+  </div>
+</div>
+
+<%# -----Reviews section----- %>
+<div class="bg-[#E9E9E9]">
+  <div class="flex items-center justify-center border-y border-solid border-[#7C7C7C] h-12">
+    <div class="flex items-center w-4/6 font-bold text-downriver text-2xl uppercase">
+      <span>Отзывы</span>
+    </div>
+  </div>
+  <div class="flex items-center justify-center">
+    <div class="flex items-center justify-between w-4/6 py-3">
+      <div class="flex items-center w-3/4 h-[72px]">
+        <div class="bg-mine-shaft w-3 h-full rounded-l-full opacity-[17%] mr-3"></div>
+        <span class="font-light text-downriver">Супер круто классно шик В связи с этим нужно подчеркнуть, что мелькание мыслей случайно. Скрытый смысл жизненно начинает стиль. Примочка, без использования формальных признаков поэзии, представляет собой флажолет.</span>
+      </div>
+      <div class="flex flex-col items-center justify-center text-[#8E8E8E] font-regular uppercase py-4">
+        <span class="mb-4 text-sm">Юзернейм</span>
+        <span class="mb-4 text-sm">Юзернейм</span>
+        <span class="font-semibold text-downriver mb-4">Юзернейм</span>
+        <span class="mb-4 text-sm">Юзернейм</span>
+        <span class="text-sm">Юзернейм</span>
+      </div>
+    </div>
   </div>
 </div>
