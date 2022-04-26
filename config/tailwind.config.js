@@ -30,9 +30,6 @@ module.exports = {
         sans: ['Montserrat', 'sans-serif'],
         train: ['Train One', 'cursive'],
       },
-      fontSize: {
-        'x': '22px',
-      },
       width: {
         '180': '180px',
       },
@@ -41,6 +38,9 @@ module.exports = {
       },
       boxShadow: {
         'main': '0px 15px 30px rgba(0, 0, 0, 0.15)',
+        'header': '0px 5px 30px rgba(0, 0, 0, 0.15)',
+        'about-right': '6px 7px 4px rgba(0, 0, 0, 0.25)',
+        'about-left': '-6px 7px 4px rgba(0, 0, 0, 0.25)',
       },
     },
   },
