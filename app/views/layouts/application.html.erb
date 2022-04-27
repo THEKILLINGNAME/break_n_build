@@ -16,16 +16,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
   </head>
   <body>
-    <header class="z-50 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2 shadow-header border-b  border-brandy-rose">
+    <header class="z-50 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2 shadow-header border-b border-brandy-rose">
       <div class="flex items-center justify-between w-4/6">
         <div class="flex items-center font-sans font-medium text-white">
           <img src="" alt="LOGO">
-          <a href="" class="mx-5 font-bold tracking-wide">Главная</a>
-          <a href="" class="mx-5 font-bold tracking-wide">Каталог</a>
+          <%= link_to "Главная", root_path, class: "mx-5 font-bold tracking-wide" %>
+          <%= link_to "Каталог", products_path, class: "mx-5 font-bold tracking-wide" %>
         </div>
-        <%# <div class="font-sans font-medium text-white">
-
-        </div> %>
         <div class="flex items-center justify-between w-1/5">
           <div class="relative w-12">
             <%= svg_tag "/images/icons/cart.svg", class:"h-12 w-10 pointer" %>
@@ -35,6 +32,11 @@
         </div>
       </div>
     </header>
+
+    <% unless @hide_margin %>
+      <div class="mb-16"></div>
+    <% end %>
+
     <p class="notice bg-[#5ec479]"><%= notice %></p>
     <p class="alert bg-[#a5c45e]"><%= alert %></p>
     <%#<span>
