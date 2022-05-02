@@ -3,4 +3,6 @@ class Product < ApplicationRecord
 
   validates :title, presence: true
   validates :price, presence: true
+
+  include ImageUploader::Attachment(:image)
 end
