@@ -42,6 +42,9 @@ module.exports = {
         'about-right': '6px 7px 4px rgba(0, 0, 0, 0.25)',
         'about-left': '-6px 7px 4px rgba(0, 0, 0, 0.25)',
       },
+      transitionDuration: {
+        '400': '400ms',
+      }
     },
   },
   plugins: [

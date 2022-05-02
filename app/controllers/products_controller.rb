@@ -1,15 +1,17 @@
 class ProductsController < ApplicationController
-  include ActiveRecord::Sanitization::ClassMethods
+  SORTABLE_FIELDS = {
+    "title_asc"  => "title asc" ,
+    "title_desc" => "title desc",
+    "brand_asc"  => "brands.name asc" ,
+    "brand_desc" => "brands.name desc",
+    "price_asc"  => "price asc" ,
+    "price_desc" => "price desc",
+    "stock_asc"  => "stock asc" ,
+    "stock_desc" => "stock desc"
+  }.freeze
 
   def index
-    @products =
-      Product.order(
-        sanitize_sql_for_order(
-          "#{params[:sort_field]} #{params[:sort_direction]}"
-        )
-      )
-
-    @sort_direction =
-      if params[:sort_direction] == "desc" then "asc" else "desc" end
+    @sort_by = params[:sort_by]
+    @products = Product.includes(:brand).order SORTABLE_FIELDS[@sort_by]
   end
 end

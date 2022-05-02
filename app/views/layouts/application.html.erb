@@ -20,12 +20,14 @@
       <div class="flex items-center justify-between w-4/6">
         <div class="flex items-center font-sans font-medium text-white">
           <img src="" alt="LOGO">
-          <%= link_to "Главная", root_path, class: "mx-5 font-bold tracking-wide" %>
-          <%= link_to "Каталог", products_path, class: "mx-5 font-bold tracking-wide" %>
+          <%= link_to "Главная", root_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
+          <%= link_to "Каталог", products_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
         </div>
         <div class="flex items-center justify-between w-1/5">
           <div class="relative w-12">
-            <%= svg_tag "/images/icons/cart.svg", class:"h-12 w-10 pointer" %>
+            <%= link_to root_path do %>
+              <% svg_tag "/images/icons/cart.svg", class:"h-12 w-10" %>
+            <% end %>
             <span class=" text-sm bg-brandy-rose border-2 border-white text-white min-w-[22px] px-1 absolute top-0 right-0 rounded text-center">2</span>
           </div>
           <%= svg_tag "/images/icons/person-sharp-fixed.svg", class:"h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer" %>

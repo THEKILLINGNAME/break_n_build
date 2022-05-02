@@ -1,0 +1,58 @@
+<div class="bg-alabaster">
+  <div class="flex flex-col w-[70%]">
+    <div class="flex justify-between">
+      <% if @sort_by == "title_asc" %>
+        <%= link_to "Title", {sort_by: "title_desc"}, {class: "w-[25%] bg-emerald-500"} %>
+      <% elsif @sort_by == "title_desc" %>
+        <%= link_to "Title", {sort_by: "title_asc"}, {class: "w-[25%] bg-red-500"} %>
+      <% else %>
+        <%= link_to "Title", {sort_by: "title_asc"}, {class: "w-[25%]"} %>
+      <% end %>
+
+      <% if @sort_by == "brand_asc" %>
+        <%= link_to "Brand", {sort_by: "brand_desc"}, {class: "w-[25%] bg-emerald-500"} %>
+      <% elsif @sort_by == "brand_desc" %>
+        <%= link_to "Brand", {sort_by: "brand_asc"}, {class: "w-[25%] bg-red-500"} %>
+      <% else %>
+        <%= link_to "Brand", {sort_by: "brand_asc"}, {class: "w-[25%]"} %>
+      <% end %>
+
+      <% if @sort_by == "price_asc" %>
+        <%= link_to "Price", {sort_by: "price_desc"}, {class: "w-[25%] bg-emerald-500"} %>
+      <% elsif @sort_by == "price_desc" %>
+        <%= link_to "Price", {sort_by: "price_asc"}, {class: "w-[25%] bg-red-500"} %>
+      <% else %>
+        <%= link_to "Price", {sort_by: "price_asc"}, {class: "w-[25%]"} %>
+      <% end %>
+
+      <% if @sort_by == "stock_asc" %>
+        <%= link_to "Stock", {sort_by: "stock_desc"}, {class: "w-[25%] bg-emerald-500"} %>
+      <% elsif @sort_by == "stock_desc" %>
+        <%= link_to "Stock", {sort_by: "stock_asc"}, {class: "w-[25%] bg-red-500"} %>
+      <% else %>
+        <%= link_to "Stock", {sort_by: "stock_asc"}, {class: "w-[25%]"} %>
+      <% end %>
+    </div>
+
+    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
+      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
+      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+        <span class="font-sans font-light text-base">Валик</span>
+        <span class="font-sans font-regular text-xl">5000 тг</span>
+      </div>
+    </div>
+
+    <div class="flex justify-between flex-wrap">
+      <% @products.each do |product| %>
+        <span class="w-[25%]"><%= product.title %></span>
+        <span class="w-[25%]"><%= product.brand.name %></span>
+        <span class="w-[25%]"><%= sprintf("%.2f", product.price) %></span>
+        <% if product.stock %>
+          <span class="w-[25%]">В наличии</span>
+        <% else %>
+          <span class="w-[25%]">Нет в наличии</span>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>
