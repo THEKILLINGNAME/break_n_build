@@ -71,5 +71,5 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # Make strict_loading default across all models (resolves N + 1)
-  config.active_record.strict_loading_by_default = true
+  # config.active_record.strict_loading_by_default = true
 end

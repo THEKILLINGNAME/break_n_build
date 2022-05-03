@@ -59,5 +59,5 @@ Rails.application.configure do
   # config.action_view.annotate_rendered_view_with_filenames = true
 
   # Make strict_loading default across all models (resolves N + 1)
-  config.active_record.strict_loading_by_default = true
+  # config.active_record.strict_loading_by_default = true
 end

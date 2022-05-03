@@ -9,6 +9,22 @@ RailsAdmin.config do |config|
   end
   config.current_user_method(&:current_user)
 
+  # config.model Product do
+  #   edit do
+  #     field :brand do
+  #       eager_load true
+  #     end
+  #   end
+  # end
+
+  # config.model Brand do
+  #   edit do
+  #     field :products do
+  #       eager_load true
+  #     end
+  #   end
+  # end
+
   ## == CancanCan ==
   # config.authorize_with :cancancan
 
@@ -40,3 +56,9 @@ RailsAdmin.config do |config|
     # history_show
   end
 end
+
+# RailsAdmin.config "Product" do
+#   field :brand do
+#     eager_load true
+#   end
+# end
