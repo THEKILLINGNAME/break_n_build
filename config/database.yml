@@ -84,3 +84,4 @@ production:
   database: break_n_build_production
   username: break_n_build
   password: <%= ENV["BREAK_N_BUILD_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
