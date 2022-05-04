@@ -1,62 +1,48 @@
-<div class="bg-alabaster">
-  <div class="flex flex-col w-[70%]">
-    <div class="flex justify-between">
-      <% if @sort_by == "title_asc" %>
-        <%= link_to "Title", {sort_by: "title_desc"}, {class: "w-[25%] bg-emerald-500"} %>
-      <% elsif @sort_by == "title_desc" %>
-        <%= link_to "Title", {sort_by: "title_asc"}, {class: "w-[25%] bg-red-500"} %>
-      <% else %>
-        <%= link_to "Title", {sort_by: "title_asc"}, {class: "w-[25%]"} %>
-      <% end %>
-
-      <% if @sort_by == "brand_asc" %>
-        <%= link_to "Brand", {sort_by: "brand_desc"}, {class: "w-[25%] bg-emerald-500"} %>
-      <% elsif @sort_by == "brand_desc" %>
-        <%= link_to "Brand", {sort_by: "brand_asc"}, {class: "w-[25%] bg-red-500"} %>
-      <% else %>
-        <%= link_to "Brand", {sort_by: "brand_asc"}, {class: "w-[25%]"} %>
-      <% end %>
-
-      <% if @sort_by == "price_asc" %>
-        <%= link_to "Price", {sort_by: "price_desc"}, {class: "w-[25%] bg-emerald-500"} %>
-      <% elsif @sort_by == "price_desc" %>
-        <%= link_to "Price", {sort_by: "price_asc"}, {class: "w-[25%] bg-red-500"} %>
-      <% else %>
-        <%= link_to "Price", {sort_by: "price_asc"}, {class: "w-[25%]"} %>
-      <% end %>
-
-      <% if @sort_by == "stock_asc" %>
-        <%= link_to "Stock", {sort_by: "stock_desc"}, {class: "w-[25%] bg-emerald-500"} %>
-      <% elsif @sort_by == "stock_desc" %>
-        <%= link_to "Stock", {sort_by: "stock_asc"}, {class: "w-[25%] bg-red-500"} %>
-      <% else %>
-        <%= link_to "Stock", {sort_by: "stock_asc"}, {class: "w-[25%]"} %>
-      <% end %>
+<div class="">
+  <div class="flex w-4/6 mx-auto">
+    <div>
+      <div class="flex flex-col mt-5 w-28">
+        <%= sort_link(@query, :title, "Название", default_order: :asc, class: "flex items-center") %>
+        <%= sort_link(@query, :brand, "Бренд", class: "flex items-center") %>
+        <%= sort_link(@query, :price, "Цена", class: "flex items-center") %>
+      </div>
     </div>
 
-    <!--<div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
-      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
-      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
-        <span class="font-sans font-light text-base">Валик</span>
-        <span class="font-sans font-regular text-xl">5000 тг</span>
-      </div>
-    </div>-->
+    <div class="flex flex-col m-5 mr-0">
+      <% @products.each_slice(3) do |product_row| %>
+        <div class="flex mb-[2%] last:mb-0">
+          <% product_row.each do |product| %>
+            <div class="flex flex-col items-center rounded-x border border-solid border-silver w-[32%] mr-[2%] last:mr-0">
+              <% if product.image %>
+                <%= image_tag product.image_url, class: "rounded-t-x min-h-[250px]" %>
+              <% else %>
+                <%= image_tag "https://cdn.vox-cdn.com/thumbor/eTje7WAi-OkkksXfO84lmeOKOrU=/0x0:4000x2668/1200x800/filters:focal(1680x1014:2320x1654)/cdn.vox-cdn.com/uploads/chorus_image/image/66803942/Grow_grass_iStock_899234322.0.jpg", class: "min-h-[250px] rounded-t-x" %>
+              <% end %>
+              <div class="flex flex-col items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+                <span class="font-sans font-light text-base"><%= product.title %></span>
+                <span class="font-sans font-light text-base normal-case">"<%= product.brand.name %>"</span>
 
-    <div class="flex justify-between flex-wrap">
-      <% @products.each do |product| %>
-        <span class="w-1/5"><%= product.title %></span>
-        <span class="w-1/5"><%= product.brand.name %></span>
-        <% if product.image %>
-          <%= image_tag product.image_url, class: "w-1/5" %>
-        <% else %>
-          <%= image_tag "https://cdn.vox-cdn.com/thumbor/eTje7WAi-OkkksXfO84lmeOKOrU=/0x0:4000x2668/1200x800/filters:focal(1680x1014:2320x1654)/cdn.vox-cdn.com/uploads/chorus_image/image/66803942/Grow_grass_iStock_899234322.0.jpg", class: "w-[25%]" %>
-        <% end %>
-        <span class="w-1/5"><%= sprintf("%.2f", product.price) %></span>
-        <% if product.stock %>
-          <span class="w-1/5">В наличии</span>
-        <% else %>
-          <span class="w-1/5">Нет в наличии</span>
-        <% end %>
+                <div class="flex items-center justify-between my-6 w-full">
+                  <% if product.stock %>
+                    <span class="text-sm">В наличии</span>
+                  <% else %>
+                    <span class="text-sm">Нет в наличии</span>
+                  <% end %>
+                  <span class="font-sans font-regular text-xl"><%= sprintf("%.2f", product.price) %>ТГ</span>
+                </div>
+
+                <div class="flex w-full justify-between">
+                  <div class="flex items-center">
+                    <span class="flex items-center px-3 border border-slate-400 rounded-l-sm h-9 cursor-pointer">-</span>
+                    <input type="text" class="w-9 h-9 text-base border border-slate-400 focus:ring-none focus:ring-transparent focus:border-slate-400 cursor-default">
+                    <span class="flex items-center px-3 border border-slate-400 rounded-r-sm h-9 cursor-pointer">+</span>
+                  </div>
+                  <button class="bg-brown h-10 px-4 rounded-md text-white hover:bg-dark-brown font-medium">В корзину</button>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       <% end %>
     </div>
   </div>

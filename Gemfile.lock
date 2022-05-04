@@ -114,6 +114,8 @@ GEM
     importmap-rails (1.0.3)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
+    inflections (4.1.0)
+      activesupport (>= 4.0.0)
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
@@ -204,6 +206,10 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rake (13.0.6)
+    ransack (3.1.0)
+      activerecord (>= 6.0.4)
+      activesupport (>= 6.0.4)
+      i18n
     regexp_parser (2.3.0)
     reline (0.3.1)
       io-console (~> 0.5)
@@ -277,11 +283,13 @@ DEPENDENCIES
   devise
   image_processing (~> 1.2)
   importmap-rails
+  inflections
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
   rails_admin
+  ransack (~> 3.1)
   sassc (~> 2.1.0)
   sassc-rails
   selenium-webdriver

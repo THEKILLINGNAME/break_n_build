@@ -11,7 +11,9 @@ class ProductsController < ApplicationController
   }.freeze
 
   def index
-    @sort_by = params[:sort_by]
-    @products = Product.includes(:brand).order SORTABLE_FIELDS[@sort_by]
+    # @sort_by = params[:sort_by]
+    # @products = Product.includes(:brand).order SORTABLE_FIELDS[@sort_by]
+
+    @products = @query.result(distinct: true) #TODO check sanitize_sql_for_order
   end
 end
