@@ -12,26 +12,52 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
   </head>
   <body>
     <header class="z-50 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2 shadow-header border-b border-brandy-rose">
       <div class="flex items-center justify-between w-4/6">
+
         <div class="flex items-center font-sans font-medium text-white">
           <img src="" alt="LOGO">
           <%= link_to "Главная", root_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
           <%= link_to "Каталог", products_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
         </div>
+
         <div class="flex items-center justify-between w-1/5">
+
           <div class="relative w-12">
             <%= link_to root_path do %>
               <% svg_tag "/images/icons/cart.svg", class:"h-12 w-10" %>
             <% end %>
-            <span class=" text-sm bg-brandy-rose border-2 border-white text-white min-w-[22px] px-1 absolute top-0 right-0 rounded text-center">2</span>
+            <span class="text-sm bg-brandy-rose border-2 border-white text-white min-w-[22px] px-1 absolute top-0 right-0 rounded text-center">2</span>
           </div>
-          <%= svg_tag "/images/icons/person-sharp-fixed.svg", class:"h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer" %>
+
+          <% if user_signed_in? %>
+
+            <% if current_user.admin %>
+              <%= link_to rails_admin_path, class: "flex items-center justify-center text-white font-regular h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer uppercase text-xl" do %>
+                <%= @email[0,2] %>
+              <% end %>
+            <% else %>
+              <%= link_to edit_user_registration_path, class: "flex items-center justify-center text-white font-bold h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer uppercase text-xl" do %>
+                <%= @email[0,2] %>
+              <% end %>
+            <% end %>
+
+            <%= button_to "Выйти", destroy_user_session_path, method: :delete, class: "flex items-center justify-center text-white font-bold h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer" %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <%= svg_tag "/images/icons/person-sharp-fixed.svg", class:"h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer" %>
+            <% end %>
+          <% end %>
+
         </div>
+      </div>
+      <div>
+        <p class="notice bg-[#5ec479]"><%= notice %></p>
+        <p class="alert bg-[#a5c45e]"><%= alert %></p>
       </div>
     </header>
 
@@ -39,25 +65,8 @@
       <div class="mb-16"></div>
     <% end %>
 
-    <p class="notice bg-[#5ec479]"><%= notice %></p>
-    <p class="alert bg-[#a5c45e]"><%= alert %></p>
-    <%#<span>
-      <%= link_to "Break'n'build", root_path %>
-    <%#</span>
-    <span> %>
-      <%# <%= link_to "Регистрация", new_user_registration_path %>
-    <%#</span>
-    <span>
-      <%= link_to "Войти", new_user_session_path %>
-    <%#</span>
-    <span>
-      <%= link_to "Редактировать профиль", edit_user_registration_path %>
-    <%#</span>
-    <span>
-      <%= button_to "Выйти", destroy_user_session_path, method: :delete %>
-    <%#</span>%>
-    <%#%>
     <%= yield %>
+
     <footer class="flex items-center justify-center bg-mine-shaft text-brandy-rose py-10">
       <div class="flex flex-col justify-around w-4/5 text-sm">
 
@@ -84,13 +93,22 @@
 
         <div class="flex justify-between h-16 my-5">
           <div class="flex justify-between w-80">
-            <%= svg_tag "/images/icons/logo-vk.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
-            <%= svg_tag "/images/icons/logo-instagram.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
-            <%= svg_tag "/images/icons/logo-github.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
+            <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
+              <%= svg_tag "/images/icons/logo-vk.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
+              <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">Вконтакте</span>
+            <% end %>
+            <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
+              <%= svg_tag "/images/icons/logo-instagram.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
+              <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">Инстаграм</span>
+            <% end %>
+            <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
+              <%= svg_tag "/images/icons/logo-github.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
+              <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">Github</span>
+            <% end %>
           </div>
           <div class="flex w-80">
-            <%= link_to root_path, class:"flex items-center justify-center border-2 border-white rounded-md p-2" do %>
-              <span class="uppercase font-semibold text-xs text-white">Подписаться</span>
+            <%= link_to root_path, class:"flex items-center justify-center text-white border-2 border-white rounded-md p-2" do %>
+              <span class="uppercase font-semibold text-xs">Подписаться</span>
             <% end %>
           </div>
         </div>

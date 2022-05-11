@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
-  before_action :set_query
+  before_action :actions_with_current_user, :set_query
+
+  def actions_with_current_user
+    if current_user
+      @email = current_user.email
+    # else
+    #   redirect_to root_path notice: "Пожалуйста, авторизуйтесь"  <-- Это вообще нужно?
+    end
+  end
 
   def set_query
     @q = params[:q]
-    @query = Product.ransack(@q) #TODO check sanitize_sql_for_order
+    @query = Product.ransack(@q)
   end
 end

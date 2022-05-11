@@ -1,4 +1,5 @@
 <% @hide_margin = true %>
+
 <%# -----Meeting section----- %>
 <div class="flex justify-center items-center flex-col h-screen w-full">
   <div class="flex flex-col sm:flex-row justify-between items-center w-4/6 text-brandy-rose mb-5">
@@ -19,15 +20,17 @@
     <div class="bg-transparent border border-apple-blossom border-solid rounded w-5 h-5 cursor-pointer"></div>
     <div class="bg-transparent border border-apple-blossom border-solid rounded w-5 h-5 cursor-pointer"></div>
   </div>
-  <div class="flex items-center justify-center">
-    <div class="h-px w-20 bg-gradient-to-l from-dusty-gray to-transparent"></div>
+  <div class="flex items-center justify-center group">
+    <div class="h-px w-20 bg-gradient-to-l from-dusty-gray to-transparent transition-all duration-300 group-hover:w-0"></div>
     <%=
-      link_to "Открыть каталог", root_path,
+      link_to "Открыть каталог", products_path,
         class:"bg-transparent border border-dusty-gray border-solid " \
               "rounded-md font-sans font-bold text-2xl " \
-              "text-downriver uppercase px-5 py-3"
+              "text-downriver uppercase px-5 py-3 " \
+              "transition-[outline] ease-in-out delay-100 duration-200 " \
+              "outline outline-2 outline-transparent group-hover:outline-[#c5bebe]"
     %>
-    <div class="h-px w-20 bg-gradient-to-r from-dusty-gray to-transparent"></div>
+    <div class="h-px w-20 bg-gradient-to-r from-dusty-gray to-transparent transition-all duration-300 group-hover:w-0"></div>
   </div>
 </div>
 
@@ -35,33 +38,15 @@
 <div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
   <div class="flex items-center justify-between w-4/6">
     <span class="relative uppercase font-sans font-bold text-2xl text-white after:w-180 after:h-1 after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 before:top-10">Новинки</span>
-    <%=link_to "Смотреть все", root_path, class:"uppercase font-sans font-regular text-sm text-white hover:underline" %>
+    <%=link_to "Смотреть все", products_path, class: "uppercase font-sans font-regular text-sm text-white hover:underline" %>
   </div>
 </div>
 
 <div class="flex items-center justify-center">
   <div class="flex items-center justify-between w-4/6">
-    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
-      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
-      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
-        <span class="font-sans font-light text-base">Валик</span>
-        <span class="font-sans font-regular text-xl">5000 тг</span>
-      </div>
-    </div>
-    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
-      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
-      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
-        <span class="font-sans font-light text-base">Валик</span>
-        <span class="font-sans font-regular text-xl">5000 тг</span>
-      </div>
-    </div>
-    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
-      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
-      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
-        <span class="font-sans font-light text-base">Валик</span>
-        <span class="font-sans font-regular text-xl">5000 тг</span>
-      </div>
-    </div>
+    <% @products.each do |product| %>
+      <%= render "home_product", product: product %>
+    <% end %>
   </div>
 </div>
 
@@ -69,33 +54,15 @@
 <div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
   <div class="flex items-center justify-between w-4/6">
     <span class="relative uppercase font-sans font-bold text-2xl text-white after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 before:top-10">Бестселлер</span>
-    <%=link_to "Смотреть все", root_path, class:"uppercase font-sans font-regular text-sm text-white hover:underline" %>
+    <%=link_to "Смотреть все", products_path, class: "uppercase font-sans font-regular text-sm text-white hover:underline" %>
   </div>
 </div>
 
 <div class="flex items-center justify-center">
   <div class="flex items-center justify-between w-4/6">
-    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
-      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
-      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
-        <span class="font-sans font-light text-base">Валик</span>
-        <span class="font-sans font-regular text-xl">5000 тг</span>
-      </div>
-    </div>
-    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
-      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
-      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
-        <span class="font-sans font-light text-base">Валик</span>
-        <span class="font-sans font-regular text-xl">5000 тг</span>
-      </div>
-    </div>
-    <div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[30%]">
-      <div><img class="rounded-t-x" src="https://vist.market/storage/uploads/thumbs/store/subproduct/453x453_03-106.jpg" alt=""></div>
-      <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
-        <span class="font-sans font-light text-base">Валик</span>
-        <span class="font-sans font-regular text-xl">5000 тг</span>
-      </div>
-    </div>
+    <% @products.each do |product| %>
+      <%= render "home_product", product: product %>
+    <% end %>
   </div>
 </div>
 
@@ -109,7 +76,8 @@
 
   <div class="flex items-center justify-center py-24">
     <div class="flex items-center justify-between w-4/5">
-      <span class="text-azure text-lg w-[42%]">Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным. Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным.</span>
+      <span class="text-azure text-lg w-[42%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id totam saepe incidunt aperiam veritatis expedita tenetur, illum minus optio quisquam aut, minima consequatur. Repudiandae quam praesentium obcaecati doloremque quidem eveniet?
+      Unde voluptatum doloribus aut eligendi veritatis magni excepturi ullam fugit. Omnis, beatae laudantium dicta quaerat sint aspernatur quidem ipsa reiciendis alias ipsum, nihil distinctio. Quas sint adipisci corporis eaque alias?</span>
       <img class="rounded-x shadow-about-right skew-x-[-.4deg]" src="https://picsum.photos/seed/1/560/300" alt="">
     </div>
   </div>
@@ -117,7 +85,7 @@
   <div class="flex items-center justify-center bg-seashell py-24">
     <div class="flex items-center justify-between w-4/5">
       <img class="rounded-x shadow-about-left skew-x-[.4deg]" src="https://picsum.photos/seed/2/560/300" alt="">
-      <span class="text-azure text-lg w-[42%]">Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным. Впечатление выстраивает хроматический брахикаталектический стих. Обсценная идиома, как бы это ни казалось парадоксальным.</span>
+      <span class="text-azure text-lg w-[42%]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis ratione veritatis quod ipsam. Cum, voluptatum? Blanditiis expedita debitis illo, magni consequuntur tempore accusamus. Vero vel quasi facere beatae incidunt sed.</span>
     </div>
   </div>
 </div>

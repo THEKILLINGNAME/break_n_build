@@ -1,0 +1,37 @@
+<div class="flex flex-col m-5 mr-0 w-full">
+  <% @products.each_slice(3) do |product_row| %>
+    <div class="flex mb-[2%] last:mb-0">
+      <% product_row.each do |product| %>
+        <div class="flex flex-col items-center rounded-x border border-solid border-silver w-[32%] mr-[2%] last:mr-0">
+          <% if product.image %>
+            <%= image_tag product.image_url, class: "rounded-t-x h-[260px]" %>
+          <% else %>
+            <%= image_tag "https://thumbs.dreamstime.com/b/building-tools-hand-drawn-sketch-construction-vector-illustration-building-tools-hand-drawn-sketch-construction-vector-189008948.jpg", class: "h-[260px] rounded-t-x" %>
+          <% end %>
+          <div class="flex flex-col items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+            <span class="font-sans font-light text-base"><%= product.title %></span>
+            <span class="font-sans font-light text-base normal-case">"<%= product.brand.name %>"</span>
+
+            <div class="flex items-center justify-between my-6 w-full">
+              <% if product.stock %>
+                <span class="text-[13px]">В наличии</span>
+              <% else %>
+                <span class="text-[13px]">Нет в наличии</span>
+              <% end %>
+              <span class="font-sans font-regular text-xl"><%= sprintf("%.2f", product.price) %>ТГ</span>
+            </div>
+
+            <div class="flex w-full justify-between">
+              <div class="flex items-center">
+                <span class="flex items-center px-3 border border-slate-400 rounded-l-sm h-9 cursor-pointer">-</span>
+                <input type="text" class="w-9 h-9 text-base border border-slate-400 focus:ring-none focus:ring-transparent focus:border-slate-400 cursor-default">
+                <span class="flex items-center px-3 border border-slate-400 rounded-r-sm h-9 cursor-pointer">+</span>
+              </div>
+              <button class="bg-brown h-10 px-4 rounded-md text-white hover:bg-dark-brown font-medium">В корзину</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,10 @@
+<div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[32%] group relative">
+  <%= image_tag "https://thumbs.dreamstime.com/b/building-tools-hand-drawn-sketch-construction-vector-illustration-building-tools-hand-drawn-sketch-construction-vector-189008948.jpg", class: "rounded-t-x h-80" %>
+  <div class="flex items-center bg-[#e29c4ba4] w-full h-80 absolute rounded-t-lg shadow-inset transition-opacity duration-200 ease-in opacity-0 group-hover:opacity-100">
+    <%= link_to "Смотреть", products_path, class: "flex items-center text-xl font-semibold justify-center mx-auto w-[60%] py-4 text-white bg-[#000000a1] border-2 border-white rounded-lg" %>
+  </div>
+  <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+    <span class="font-sans font-light text-base truncate"><%= product.title %></span>
+    <span class="font-sans font-regular text-xl"><%= product.price.round %> тг</span>
+  </div>
+</div>
