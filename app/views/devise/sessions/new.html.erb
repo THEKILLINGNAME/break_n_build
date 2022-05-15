@@ -1,26 +1,44 @@
-<h2>Log in</h2>
+<div class="flex flex-col items-center h-[560px] text-white">
+  <div class="flex flex-col justify-center items-center h-full">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <div class="flex flex-col items-center bg-mine-shaft px-10 py-9 rounded-lg">
+      <h2 class="font-bold text-lg mb-4">Авторизация</h2>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "flex flex-col w-[300px]" }) do |f| %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="field flex flex-col relative text-black my-4">
+          <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "relative peer bg-transparent rounded border-2 border-brandy-rose text-white transition-colors placeholder-shown:border-white focus:border-brandy-rose focus:ring-0 focus:outline-0 w-full" %>
+          <%= f.label :email, class: "text-brandy-rose text-sm mb-1 absolute bottom-10 -left-[1px] peer-placeholder-shown:opacity-0 transition-opacity" %>
+        </div>
+
+        <div class="field flex flex-col relative text-black mt-4">
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "Пароль", class: "relative peer bg-transparent rounded border-2 border-brandy-rose text-white transition-colors placeholder-shown:border-white focus:border-brandy-rose focus:ring-0 focus:outline-0 w-full" %>
+          <%= f.label :password, class: "text-brandy-rose text-sm mb-1 absolute bottom-10 -left-[1px] transition-opacity peer-placeholder-shown:opacity-0" %>
+        </div>
+        <%= link_to "Забыли пароль?", new_password_path(resource_name), class: "text-white text-sm transition-colors hover:text-brandy-rose mt-0.5" %>
+
+        <% if devise_mapping.rememberable? %>
+          <div class="field flex items-center my-4">
+            <%= f.check_box :remember_me, class: "cursor-pointer transition-colors mr-2 focus:ring-0 focus:ring-offset-0 border-2 border-white rounded bg-transparent checked:text-brandy-rose" %>
+            <%= f.label :remember_me, class:"cursor-pointer" %>
+          </div>
+        <% end %>
+
+        <div class="actions mb-4">
+          <%= f.submit "Войти", class: "cursor-pointer font-medium rounded border-2 border-white transition-colors p-2 hover:border-brandy-rose hover:bg-brandy-rose hover:text-black" %>
+        </div>
+
+      <% end %>
+
+      <div class="flex flex-col items-center text-sm w-full">
+        <div class="flex items-center justify-between w-full">
+          <span class="bg-gray-600 w-[25%] h-px"></span>
+          <span>Нет аккаунта?</span>
+          <span class="bg-gray-600 w-[25%] h-px"></span>
+        </div>
+        <%= link_to "Зарегистрироваться", new_registration_path(resource_name), class: "transition-colors hover:text-brandy-rose" %>
+      </div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

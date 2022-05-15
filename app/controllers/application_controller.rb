@@ -4,8 +4,6 @@ class ApplicationController < ActionController::Base
   def actions_with_current_user
     if current_user
       @email = current_user.email
-    # else
-    #   redirect_to root_path notice: "Пожалуйста, авторизуйтесь"  <-- Это вообще нужно?
     end
   end
 

@@ -6,4 +6,7 @@
   .shadow-inset {
     box-shadow: inset 0px 5px 30px rgba(0, 0, 0, 0.15);
   }
+  .text-shadow-md {
+    text-shadow: 2px 2px 8px #000000;
+  }
 }

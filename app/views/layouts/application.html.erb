@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
   </head>
-  <body>
+  <body class="min-h-screen relative pb-80">
     <header class="z-50 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2 shadow-header border-b border-brandy-rose">
       <div class="flex items-center justify-between w-4/6">
 
@@ -55,19 +55,21 @@
 
         </div>
       </div>
+
       <div>
         <p class="notice bg-[#5ec479]"><%= notice %></p>
         <p class="alert bg-[#a5c45e]"><%= alert %></p>
       </div>
+
     </header>
 
     <% unless @hide_margin %>
-      <div class="mb-16"></div>
+      <div class="h-16"></div>
     <% end %>
 
     <%= yield %>
 
-    <footer class="flex items-center justify-center bg-mine-shaft text-brandy-rose py-10">
+    <footer class="flex items-center justify-center bg-mine-shaft text-brandy-rose py-10 absolute bottom-0 w-full h-80">
       <div class="flex flex-col justify-around w-4/5 text-sm">
 
         <div class="flex justify-between">

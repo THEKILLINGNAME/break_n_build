@@ -20,5 +20,8 @@ module BreakNBuild
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.assets.css_compressor = nil
+
+    config.i18n.default_locale = :ru
+    config.i18n.available_locales = [:en, :ru]
   end
 end

@@ -99,6 +99,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-i18n (1.10.2)
+      devise (>= 4.8.0)
     digest (3.1.0)
     down (5.3.1)
       addressable (~> 2.8)
@@ -114,8 +116,6 @@ GEM
     importmap-rails (1.0.3)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
-    inflections (4.1.0)
-      activesupport (>= 4.0.0)
     io-console (0.5.11)
     irb (1.4.1)
       reline (>= 0.3.0)
@@ -192,6 +192,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.3)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     rails_admin (3.0.0)
       activemodel-serializers-xml (>= 1.0)
       kaminari (>= 0.14, < 2.0)
@@ -281,13 +284,14 @@ DEPENDENCIES
   capybara
   debug
   devise
+  devise-i18n
   image_processing (~> 1.2)
   importmap-rails
-  inflections
   jbuilder
   pg (~> 1.1)
   puma (~> 5.0)
   rails (~> 7.0.2, >= 7.0.2.3)
+  rails-i18n
   rails_admin
   ransack (~> 3.1)
   sassc (~> 2.1.0)
