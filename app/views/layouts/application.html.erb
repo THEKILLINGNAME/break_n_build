@@ -16,17 +16,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
   </head>
   <body class="min-h-screen relative pb-80">
-    <header class="z-50 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2 shadow-header border-b border-brandy-rose">
+    <header class="z-40 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2">
       <div class="flex items-center justify-between w-4/6">
 
         <div class="flex items-center font-sans font-medium text-white">
-          <img src="" alt="LOGO">
+          <%# <img src="" alt="LOGO"> %>
+          <span>LOGO</span>
           <%= link_to "Главная", root_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
           <%= link_to "Каталог", products_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
         </div>
 
         <div class="flex items-center justify-between w-1/5">
-
           <div class="relative w-12">
             <%= link_to root_path do %>
               <% svg_tag "/images/icons/cart.svg", class:"h-12 w-10" %>
@@ -35,18 +35,9 @@
           </div>
 
           <% if user_signed_in? %>
-
-            <% if current_user.admin %>
-              <%= link_to rails_admin_path, class: "flex items-center justify-center text-white font-regular h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer uppercase text-xl" do %>
-                <%= @email[0,2] %>
-              <% end %>
-            <% else %>
-              <%= link_to edit_user_registration_path, class: "flex items-center justify-center text-white font-bold h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer uppercase text-xl" do %>
-                <%= @email[0,2] %>
-              <% end %>
+            <%= link_to edit_user_registration_path, class: "flex items-center justify-center text-white font-bold h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer uppercase text-xl" do %>
+              <%= @email[0,2] %>
             <% end %>
-
-            <%= button_to "Выйти", destroy_user_session_path, method: :delete, class: "flex items-center justify-center text-white font-bold h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer" %>
           <% else %>
             <%= link_to new_user_session_path do %>
               <%= svg_tag "/images/icons/person-sharp-fixed.svg", class:"h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer" %>
@@ -55,13 +46,19 @@
 
         </div>
       </div>
-
-      <div>
-        <p class="notice bg-[#5ec479]"><%= notice %></p>
-        <p class="alert bg-[#a5c45e]"><%= alert %></p>
-      </div>
-
     </header>
+
+    <div class="z-50 flex flex-col items-center justify-center w-full fixed top-[63px] font-medium">
+      <% if notice %>
+        <p class="notice bg-emerald-100 w-2/5 border border-t-4 border-emerald-500 text-emerald-900 py-2 px-4 last:rounded-b-md break-words"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert bg-amber-100 w-2/5 border border-t-4 border-amber-500 text-amber-900 py-2 px-4 last:rounded-b-md break-words"><%= alert %></p>
+      <% end %>
+      <% if error %>
+        <p class="error bg-red-100 w-2/5 border border-t-4 border-red-500 text-red-900 py-2 px-4 last:rounded-b-md break-words"><%= error %></p>
+      <% end %>
+    </div>
 
     <% unless @hide_margin %>
       <div class="h-16"></div>
@@ -109,7 +106,7 @@
             <% end %>
           </div>
           <div class="flex w-80">
-            <%= link_to root_path, class:"flex items-center justify-center text-white border-2 border-white rounded-md p-2" do %>
+            <%= link_to root_path, class:"flex items-center justify-center text-white border-2 border-white rounded-md p-2 cursor-pointer transition-colors hover:border-brandy-rose hover:bg-brandy-rose hover:text-black" do %>
               <span class="uppercase font-semibold text-xs">Подписаться</span>
             <% end %>
           </div>

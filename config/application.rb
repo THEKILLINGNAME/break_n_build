@@ -23,5 +23,9 @@ module BreakNBuild
 
     config.i18n.default_locale = :ru
     config.i18n.available_locales = [:en, :ru]
+
+    config.action_view.field_error_proc = Proc.new { |html_tag, instance|
+      html_tag
+    }
   end
 end

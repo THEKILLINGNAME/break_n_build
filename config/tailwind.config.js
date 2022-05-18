@@ -41,10 +41,14 @@ module.exports = {
         'header': '0px 5px 30px rgba(0, 0, 0, 0.15)',
         'about-right': '6px 7px 4px rgba(0, 0, 0, 0.25)',
         'about-left': '-6px 7px 4px rgba(0, 0, 0, 0.25)',
+        'edit-profile': '0px 0px 30px 0px #0000004d',
       },
       transitionDuration: {
         '400': '400ms',
-      }
+      },
+      backgroundImage: {
+        'worker': "url('jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg')",
+      },
     },
   },
   plugins: [

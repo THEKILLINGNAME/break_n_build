@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @products = Product.limit(3)
+    @products = Product.order("created_at DESC").limit(3)
   end
 end
