@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
 
@@ -15,7 +15,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
   </head>
-  <body class="min-h-screen relative pb-80">
+  <body data-controller="main" class="min-h-screen relative pb-80">
     <header class="z-40 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2">
       <div class="flex items-center justify-between w-4/6">
 
@@ -48,7 +48,7 @@
       </div>
     </header>
 
-    <div class="z-50 flex flex-col items-center justify-center w-full fixed top-[63px] font-medium">
+    <div class="z-50 flex flex-col items-center justify-center w-full fixed top-[63px]">
       <% if notice %>
         <p class="notice bg-emerald-100 w-2/5 border border-t-4 border-emerald-500 text-emerald-900 py-2 px-4 last:rounded-b-md break-words"><%= notice %></p>
       <% end %>
@@ -115,4 +115,41 @@
       </div>
     </footer>
   </body>
+  <script>
+    // grab all the buttons
+    const users = document.querySelectorAll("#users span");
+    const reviews = document.querySelectorAll("#reviews span");
+
+    // loop through the buttons using for..of
+    for (let user of users) {
+
+      // listen for a click event
+      user.addEventListener("click", (e) => {
+        // Store the event target in a const
+        const eventTarget = e.target;
+
+        for (let u of users) {
+          u.classList.remove("bg-red-500", "text-xl")
+        }
+
+        // Add active class to the clicked element
+        eventTarget.classList.add("bg-red-500", "text-xl");
+
+        // loop through all content classes
+        for (let review of reviews) {
+
+          /* display the content if the value in the data attribute of the button and content are the same */
+          if(review.getAttribute("data-number") === user.getAttribute("data-number")) {
+            review.classList.remove("hidden");
+            review.classList.add("block");
+          }
+          // if it's not equal then hide it.
+          else {
+            review.classList.remove("block");
+            review.classList.add("hidden");
+          }
+        }
+      });
+    }
+  </script>
 </html>

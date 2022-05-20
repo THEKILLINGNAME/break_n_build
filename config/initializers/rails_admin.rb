@@ -41,10 +41,10 @@ RailsAdmin.config do |config|
     # history_index
     # history_show
   end
+  # config.model 'Product' do
+  #   edit do
+  #     field :stats, :simple_mde
+  #     field
+  #   end
+  # end
 end
-
-# RailsAdmin.config "Product" do
-#   field :brand do
-#     eager_load true
-#   end
-# end

@@ -10,12 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_05_02_112234) do
+ActiveRecord::Schema[7.0].define(version: 2022_05_20_124521) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "brands", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_drill_stats", force: :cascade do |t|
+    t.string "power_type"
+    t.string "power"
+    t.string "capacity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "product_screwdriver_stats", force: :cascade do |t|
+    t.string "power_type"
+    t.string "power"
+    t.string "rounds_per_min"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -29,7 +45,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_112234) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "image_data"
+    t.bigint "product_drill_stat_id"
+    t.bigint "product_screwdriver_stat_id"
+    t.jsonb "stats"
     t.index ["brand_id"], name: "index_products_on_brand_id"
+    t.index ["product_drill_stat_id"], name: "index_products_on_product_drill_stat_id"
+    t.index ["product_screwdriver_stat_id"], name: "index_products_on_product_screwdriver_stat_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -46,4 +67,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_02_112234) do
   end
 
   add_foreign_key "products", "brands"
+  add_foreign_key "products", "product_drill_stats"
+  add_foreign_key "products", "product_screwdriver_stats"
 end
