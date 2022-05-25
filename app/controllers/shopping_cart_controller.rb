@@ -8,7 +8,7 @@ class ShoppingCartController < ApplicationController
   def place_order
     flash[:notice] = "Покупка прошла успешно"
     session[:cart_product_ids] = []
-    redirect_back(fallback_location: root_path)
+    redirect_to shopping_cart_index_path
   end
 
   def add_to_cart
@@ -17,10 +17,10 @@ class ShoppingCartController < ApplicationController
     redirect_to product_path
   end
 
-  def remove_from_cart
+  def index_remove_from_cart
     id = params[:id].to_i
     session[:cart_product_ids].delete(id)
-    redirect_to product_path
+    redirect_to shopping_cart_index_path
   end
 
   def load_cart_products

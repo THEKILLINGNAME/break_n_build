@@ -2,8 +2,11 @@
   <div class="flex items-center w-4/6">
     <% @cart_products.each do |product| %>
       <%= product.title %>
+      <%= button_to "Удалить из корзины", shopping_cart_remove_from_cart_path(product.id), method: :delete %>
     <% end %>
 
-    <%= link_to "Купить", place_order_path %>
+    <% if @cart_products.present? %>
+      <%= link_to "Купить", place_order_path %>
+    <% end %>
   </div>
 </div>

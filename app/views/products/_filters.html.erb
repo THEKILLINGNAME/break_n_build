@@ -11,10 +11,10 @@
         <% end %>
       </span>
 
-      <% if @show_count %>
+      <% if @category || @show_count %>
         <div class="flex items-center justify-between w-full mt-2">
           <span class="text-base">Количество результатов: <%= @products.count %></span>
-          <%= link_to "Сбросить все", products_path, class: "flex items-center px-4 h-[34px] bg-gray-400 text-white font-medium text-xs uppercase rounded shadow-md hover:bg-gray-600 hover:cursor-pointer focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition duration-150 ease-in-out" %>
+          <%= button_to "Сбросить все", delete_category_path, method: :delete, class: "flex items-center px-4 h-[34px] bg-gray-400 text-white font-medium text-xs uppercase rounded shadow-md hover:bg-gray-600 hover:cursor-pointer focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition duration-150 ease-in-out" %>
         </div>
       <% end %>
     </div>

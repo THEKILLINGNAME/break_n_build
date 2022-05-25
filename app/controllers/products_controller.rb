@@ -18,7 +18,28 @@ class ProductsController < ApplicationController
     "cartridge_type"    => "Тип патрона"
   }.freeze
 
+  def delete_category
+    session[:category] = nil
+    redirect_to products_path
+  end
+
+  def show_remove_from_cart
+    id = params[:id].to_i
+    session[:cart_product_ids].delete(id)
+    redirect_to product_path
+  end
+
   def index
+    if params[:category]
+      session[:category] = params[:category]
+    end
+
+    @category = session[:category]
+    if @category
+      params[:q] ||= {}
+      params[:q][:category_eq] = @category
+    end
+
     @q = params[:q]
     @query = Product.ransack(@q)
     @products = @query.result(distinct: true)
