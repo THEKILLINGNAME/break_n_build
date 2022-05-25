@@ -1,0 +1,9 @@
+<div class="flex items-center justify-center">
+  <div class="flex items-center w-4/6">
+    <% @cart_products.each do |product| %>
+      <%= product.title %>
+    <% end %>
+
+    <%= link_to "Купить", place_order_path %>
+  </div>
+</div>

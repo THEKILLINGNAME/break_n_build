@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'shopping_cart/index'
   root "home#index"
 
   # For check if user is admin
@@ -13,4 +14,9 @@ Rails.application.routes.draw do
   }
 
   resources :products, only: [:index, :show]
+
+  post "shopping_cart/add_to_cart/:id", to: "shopping_cart#add_to_cart", as: "add_to_cart"
+  delete "shopping_cart/remove_from_cart/:id", to: "shopping_cart#remove_from_cart", as: "remove_from_cart"
+  get "shopping_cart/place_order", to: "shopping_cart#place_order", as: "place_order"
+
 end

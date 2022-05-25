@@ -38,6 +38,11 @@
 
       </div>
 
+      <div class="field flex items-center mb-4">
+        <%= f.check_box :receiving_news, class: "cursor-pointer transition-colors mr-2 focus:ring-0 focus:ring-offset-0 border-1 border-gray-500 rounded bg-transparent checked:text-brown" %>
+        <%= f.label :receiving_news, "Новостная рассылка", class: "cursor-pointer" %>
+      </div>
+
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
         <div>Ожидаем подтверждение для: <%= resource.unconfirmed_email %></div>
       <% end %>

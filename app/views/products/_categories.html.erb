@@ -3,29 +3,21 @@
     <div class="flex flex-col relative after:w-full after:h-1 after:bg-white after:absolute after:left-0 after:-bottom-6 before:w-full before:h-1 before:bg-brown before:absolute before:left-0 before:-bottom-7">
       <span class="font-bold text-base">Электроинструменты</span>
       <div class="flex flex-col text-sm">
-        <%= link_to "Дрели", root_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
-        <%= link_to "Шуруповерты", root_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
-        <%= link_to "Аккумуляторы и зарядные устройства", root_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
-        <%= link_to "Перфораторы", root_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
-        <%= link_to "Пилы", root_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
+        <%= link_to "Дрели", products_path(q: {category_i_cont_any: Product.categories.first}), class: "hover:scale-105 transition-transform ease-out duration-150" %>
+        <% pp @query.category %>
+        <%= link_to "Шуруповерты", products_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
+        <%= link_to "Аккумуляторы и зарядные устройства", products_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
+        <%= link_to "Перфораторы", products_path, class: "hover:scale-105 transition-transform ease-out duration-150" %>
       </div>
     </div>
     <div class="flex flex-col">
       <span class="font-bold text-base">Оснастка</span>
       <div class="flex flex-col text-sm">
-        <%= link_to "Биты", root_path, class: "hover:scale-110 transition-transform ease-out duration-150" %>
-        <%= link_to "Буры", root_path, class: "hover:scale-110 transition-transform ease-out duration-150" %>
+        <%= link_to "Биты", products_path, class: "hover:scale-110 transition-transform ease-out duration-150" %>
+        <%= link_to "Буры", products_path, class: "hover:scale-110 transition-transform ease-out duration-150" %>
       </div>
     </div>
-    <div class="flex flex-col">
-      <span class="font-bold text-base">Электроинструменты</span>
-      <div class="flex flex-col text-sm">
-        <%= link_to "Дрели", root_path, class: "" %>
-        <%= link_to "Шуруповёрты", root_path, class: "" %>
-        <%= link_to "Аккумуляторы и зарядные устройства", root_path, class: "" %>
-        <%= link_to "Перфораторы", root_path, class: "" %>
-        <%= link_to "Пилы", root_path, class: "" %>
-      </div>
+    <div>
     </div>
   </div>
 </div>

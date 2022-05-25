@@ -1,16 +1,32 @@
-<h2>Forgot your password?</h2>
+<div class="flex flex-col items-center h-[560px] text-white">
+  <div class="flex flex-col justify-center items-center h-full">
+    <div class="flex flex-col items-center bg-mine-shaft px-10 py-9 rounded-lg">
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+      <h2 class="font-bold text-lg mb-4">Забыли пароль?</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: "flex flex-col w-[300px]" }) do |f| %>
+
+        <div class="field flex flex-col relative text-black my-4">
+          <%= f.email_field :email, autocomplete: "email", placeholder: "Email", class: "relative peer bg-transparent rounded border-2 border-brandy-rose text-white transition-colors placeholder-shown:border-white focus:border-brandy-rose focus:ring-0 focus:outline-0 w-full" %>
+          <%= f.label :email, class: "text-brandy-rose text-sm mb-1 absolute bottom-10 -left-[1px] peer-placeholder-shown:opacity-0 transition-opacity" %>
+        </div>
+
+        <div class="mb-4 w-full">
+          <%= f.submit "Отправить инструкцию", class: "cursor-pointer font-medium rounded border-2 border-white transition-colors p-2 hover:border-brandy-rose hover:bg-brandy-rose hover:text-black" %>
+        </div>
+
+      <% end %>
+
+      <div class="flex flex-col items-center text-sm w-full">
+        <div class="flex items-center justify-between w-full">
+          <span class="bg-gray-600 h-px grow"></span>
+          <span class="mx-3">Не нужно восстановление?</span>
+          <span class="bg-gray-600 h-px grow"></span>
+        </div>
+        <%= link_to "Зарегистрироваться", new_registration_path(resource_name), class: "transition-colors hover:text-brandy-rose" %>
+        <%= link_to "Войти", new_session_path(resource_name), class: "transition-colors hover:text-brandy-rose" %>
+      </div>
+
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>

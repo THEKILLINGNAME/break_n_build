@@ -16,7 +16,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
   </head>
   <body data-controller="main" class="min-h-screen relative pb-80">
-    <header class="z-40 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2">
+    <header class="z-40 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2 border-b-2 border-transparent">
       <div class="flex items-center justify-between w-4/6">
 
         <div class="flex items-center font-sans font-medium text-white">
@@ -27,12 +27,12 @@
         </div>
 
         <div class="flex items-center justify-between w-1/5">
-          <div class="relative w-12">
-            <%= link_to root_path do %>
-              <% svg_tag "/images/icons/cart.svg", class:"h-12 w-10" %>
-            <% end %>
-            <span class="text-sm bg-brandy-rose border-2 border-white text-white min-w-[22px] px-1 absolute top-0 right-0 rounded text-center">2</span>
-          </div>
+          <%= link_to shopping_cart_index_path, class: "relative w-12" do %>
+            <%= svg_tag "/images/icons/cart.svg", class:"h-12 w-10" %>
+            <span class="text-sm bg-brandy-rose border-2 border-white text-white min-w-[22px] px-1 absolute top-0 right-0 rounded text-center">
+              <%= @cart_count %>
+            </span>
+          <% end %>
 
           <% if user_signed_in? %>
             <%= link_to edit_user_registration_path, class: "flex items-center justify-center text-white font-bold h-12 w-12 border-2 rounded-md border-white bg-brandy-rose cursor-pointer uppercase text-xl" do %>
@@ -105,8 +105,8 @@
               <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">Github</span>
             <% end %>
           </div>
-          <div class="flex w-80">
-            <%= link_to root_path, class:"flex items-center justify-center text-white border-2 border-white rounded-md p-2 cursor-pointer transition-colors hover:border-brandy-rose hover:bg-brandy-rose hover:text-black" do %>
+          <div class="flex w-80 text-">
+            <%= link_to edit_user_registration_path, class:"flex items-center justify-center text-white border-2 border-white rounded-md p-2 cursor-pointer transition-colors hover:border-brandy-rose hover:bg-brandy-rose hover:text-black" do %>
               <span class="uppercase font-semibold text-xs">Подписаться</span>
             <% end %>
           </div>
@@ -116,34 +116,24 @@
     </footer>
   </body>
   <script>
-    // grab all the buttons
     const users = document.querySelectorAll("#users span");
     const reviews = document.querySelectorAll("#reviews span");
 
-    // loop through the buttons using for..of
     for (let user of users) {
-
-      // listen for a click event
       user.addEventListener("click", (e) => {
-        // Store the event target in a const
         const eventTarget = e.target;
 
         for (let u of users) {
-          u.classList.remove("bg-red-500", "text-xl")
+          u.classList.remove("text-downriver", "text-base")
         }
 
-        // Add active class to the clicked element
-        eventTarget.classList.add("bg-red-500", "text-xl");
+        eventTarget.classList.add("text-downriver", "text-base");
 
-        // loop through all content classes
         for (let review of reviews) {
-
-          /* display the content if the value in the data attribute of the button and content are the same */
           if(review.getAttribute("data-number") === user.getAttribute("data-number")) {
             review.classList.remove("hidden");
             review.classList.add("block");
           }
-          // if it's not equal then hide it.
           else {
             review.classList.remove("block");
             review.classList.add("hidden");

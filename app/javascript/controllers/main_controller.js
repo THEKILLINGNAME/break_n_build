@@ -15,13 +15,15 @@ export default class extends Controller {
         scrollPosition = window.scrollY;
 
         if (scrollPosition >= vh - 64) {
-          header.classList.remove("bg-mine-shaft");
-          header.classList.add("bg-blue-500");
-        } else {
-          header.classList.remove("bg-blue-500");
-          header.classList.add("bg-mine-shaft");
+          header.classList.remove("border-transparent");
+          header.classList.add("border-brandy-rose");
+        }
+        else {
+          header.classList.remove("border-brandy-rose");
+          header.classList.add("border-transparent");
         }
       });
     }
+
   }
 }

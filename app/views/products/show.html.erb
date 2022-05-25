@@ -2,5 +2,14 @@
   <div class="flex items-center w-4/6">
     <%= @product.title %>
 
+    <% @stats.each do |k, v| %>
+      <%= "#{k} #{v}" %>
+    <% end %>
+
+    <% if @cart_products.include?(@product) %>
+      <%= button_to "Remove from cart", remove_from_cart_path(@product), method: :delete %>
+    <% else %>
+      <%= button_to "Add to cart", add_to_cart_path(@product) %>
+    <% end %>
   </div>
 </div>
