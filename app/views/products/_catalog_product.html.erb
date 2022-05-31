@@ -23,7 +23,7 @@
                 <% else %>
                   <span class="text-[13px]">Не в наличии</span>
                 <% end %>
-                <span class="font-sans font-regular text-lg"><%= sprintf("%.2f", product.price) %>ТГ</span>
+                <span class="font-sans font-regular text-lg"><%= product.price %>ТГ</span>
               </div>
               <div class="flex w-full items-center justify-center">
                 <%= link_to "Перейти", product_path(product), class: "flex items-center justify-center normal-case w-full bg-brown h-10 px-4 rounded-md text-white hover:bg-dark-brown font-medium" %>

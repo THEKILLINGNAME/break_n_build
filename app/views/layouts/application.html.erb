@@ -115,31 +115,4 @@
       </div>
     </footer>
   </body>
-  <script>
-    const users = document.querySelectorAll("#users span");
-    const reviews = document.querySelectorAll("#reviews span");
-
-    for (let user of users) {
-      user.addEventListener("click", (e) => {
-        const eventTarget = e.target;
-
-        for (let u of users) {
-          u.classList.remove("text-downriver", "text-base")
-        }
-
-        eventTarget.classList.add("text-downriver", "text-base");
-
-        for (let review of reviews) {
-          if(review.getAttribute("data-number") === user.getAttribute("data-number")) {
-            review.classList.remove("hidden");
-            review.classList.add("block");
-          }
-          else {
-            review.classList.remove("block");
-            review.classList.add("hidden");
-          }
-        }
-      });
-    }
-  </script>
 </html>

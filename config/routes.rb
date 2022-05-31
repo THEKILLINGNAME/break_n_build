@@ -15,10 +15,13 @@ Rails.application.routes.draw do
 
   resources :products, only: [:index, :show]
 
-  post "shopping_cart/add_to_cart/:id", to: "shopping_cart#add_to_cart", as: "add_to_cart"
-  delete "shopping_cart/remove_from_cart/:id", to: "shopping_cart#index_remove_from_cart", as: "shopping_cart_remove_from_cart"
-  delete "products/remove_from_cart/:id", to: "products#show_remove_from_cart", as: "products_remove_from_cart"
-  get "shopping_cart/place_order", to: "shopping_cart#place_order", as: "place_order"
   delete "products/delete_category", to: "products#delete_category", as: "delete_category"
 
+  post "product/:id/add_to_cart", to: "products#show_add_to_cart", as: "product_add_to_cart"
+  delete "product/:id/remove_from_cart", to: "products#show_remove_from_cart", as: "product_remove_from_cart"
+
+  post "shopping_cart/add_to_cart/:id", to: "shopping_cart#add_to_cart", as: "shopping_cart_add_to_cart"
+  delete "shopping_cart/remove_from_cart/:id", to: "shopping_cart#remove_from_cart", as: "shopping_cart_remove_from_cart"
+  delete "shopping_cart/delete_from_cart/:id", to: "shopping_cart#delete_from_cart", as: "shopping_cart_delete_from_cart"
+  get "shopping_cart/place_order", to: "shopping_cart#place_order", as: "shopping_cart_place_order"
 end

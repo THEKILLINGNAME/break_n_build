@@ -23,12 +23,6 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
-  def show_remove_from_cart
-    id = params[:id].to_i
-    session[:cart_product_ids].delete(id)
-    redirect_to product_path
-  end
-
   def index
     if params[:category]
       session[:category] = params[:category]
@@ -55,10 +49,23 @@ class ProductsController < ApplicationController
     @stats = get_stats(@product)
   end
 
+  def show_add_to_cart
+    id = params[:id]
+    session["cart_products"][id] = { amount: 1 }
+
+    redirect_to product_path
+  end
+
+  def show_remove_from_cart
+    id = params[:id]
+    session["cart_products"].delete(id)
+    redirect_to product_path
+  end
+
   private
 
   def load_cart_products
-    @cart_products = Product.find(session[:cart_product_ids])
+    @cart_products = Product.find(session["cart_products"].keys)
   end
 
   def get_stats(product)

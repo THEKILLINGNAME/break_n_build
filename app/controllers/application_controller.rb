@@ -13,10 +13,13 @@ class ApplicationController < ActionController::Base
   private
 
   def initialize_session
-    session[:cart_product_ids] ||= []
+    session["cart_products"] ||= {}
   end
 
   def set_cart_count
-    @cart_count = Product.find(session[:cart_product_ids]).count
+    @cart_count =
+      session["cart_products"]
+        .values
+        .reduce(0) { |sum, n| sum + n["amount"] }
   end
 end

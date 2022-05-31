@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_05_25_101424) do
     t.string "title", null: false
     t.text "description"
     t.bigint "brand_id", null: false
-    t.float "price", null: false
+    t.integer "price", null: false
     t.boolean "stock", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

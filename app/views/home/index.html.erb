@@ -104,10 +104,37 @@
       <div id="users" class="flex flex-col items-center justify-center text-[#8E8E8E] font-regular uppercase py-4">
         <span data-number="1" class="mb-4 text-sm cursor-pointer">Юзернейм</span>
         <span data-number="2" class="mb-4 text-sm cursor-pointer">Юзернейм</span>
-        <span data-number="3" class="mb-4 text-sm cursor-pointer">Юзернейм</span>
+        <span data-number="3" class="mb-4 text-sm cursor-pointer text-downriver text-base">Юзернейм</span>
         <span data-number="4" class="mb-4 text-sm cursor-pointer">Юзернейм</span>
         <span data-number="5" class="text-sm cursor-pointer">Юзернейм</span>
       </div>
     </div>
   </div>
 </div>
+<script>
+    const users = document.querySelectorAll("#users span");
+    const reviews = document.querySelectorAll("#reviews span");
+
+    for (let user of users) {
+      user.addEventListener("click", (e) => {
+        const eventTarget = e.target;
+
+        for (let u of users) {
+          u.classList.remove("text-downriver", "text-base")
+        }
+
+        eventTarget.classList.add("text-downriver", "text-base");
+
+        for (let review of reviews) {
+          if(review.getAttribute("data-number") === user.getAttribute("data-number")) {
+            review.classList.remove("hidden");
+            review.classList.add("block");
+          }
+          else {
+            review.classList.remove("block");
+            review.classList.add("hidden");
+          }
+        }
+      });
+    }
+  </script>
