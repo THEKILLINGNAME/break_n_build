@@ -1,14 +1,16 @@
 class ProductsController < ApplicationController
   before_action :load_cart_products, only: [:index, :show]
+  before_action :set_product, only: [:show]
+  before_action :set_category, :set_stats, only: [:show]
 
-  TRANSLATIONS = {
+  STATS_TRANSLATION = {
     "power_type"        => "Тип питания",
     "power"             => "Потребляемая мощность",
     "capacity"          => "Емкость аккумулятора",
     "output_voltage"    => "Выходное напряжение",
     "type_of_charge"    => "Тип",
-    "rounds_per_min"    => "Оборотов в мин.",
-    "strokes_per_min"   => "Ударов в мин.",
+    "rounds_per_min"    => "Оборотов/мин",
+    "strokes_per_min"   => "Ударов/мин",
     "catrtridge_type"   => "Патрон",
     "drilling_diameter" => "Диаметр сверления",
     "length"            => "Длина",
@@ -16,6 +18,14 @@ class ProductsController < ApplicationController
     "shlitz_type"       => "Тип шлица",
     "diametr"           => "Диаметр",
     "cartridge_type"    => "Тип патрона"
+  }.freeze
+  CATEGORIES_TRANSLATION = {
+    "drills"            => "Дрели",
+    "screwdrivers"      => "Шуруповёрты",
+    "chargers"          => "Аккумуляторы/зарядные устр-ва",
+    "perforators"       => "Перфораторы",
+    "screwdriver_bits"  => "Биты",
+    "perforator_bits"   => "Буры"
   }.freeze
 
   def delete_category
@@ -44,9 +54,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    @product = Product.find(params[:id])
-
-    @stats = get_stats(@product)
   end
 
   def show_add_to_cart
@@ -68,19 +75,35 @@ class ProductsController < ApplicationController
     @cart_products = Product.find(session["cart_products"].keys)
   end
 
-  def get_stats(product)
-    category = product.category
+  def set_product
+    @product = Product.find(params[:id])
+  end
 
-    product
-      .send("#{category[0..-2]}_stat")
-      .attributes
-      .except("id", "created_at", "updated_at")
-      .transform_keys do |key|
-        if TRANSLATIONS[key].present?
-          TRANSLATIONS[key]
-        else
-          key
+  def set_stats
+    category = @product.category
+
+    @stats =
+      @product
+        .send("#{category[0..-2]}_stat")
+        .attributes
+        .except("id", "created_at", "updated_at")
+        .transform_keys do |key|
+          if STATS_TRANSLATION[key].present?
+            STATS_TRANSLATION[key]
+          else
+            key
+          end
         end
+  end
+
+  def set_category
+    category = @product.category
+
+    @category =
+      if CATEGORIES_TRANSLATION.keys.include? category
+        CATEGORIES_TRANSLATION[category]
+      else
+        category
       end
   end
 end

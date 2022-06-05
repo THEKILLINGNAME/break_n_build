@@ -22,6 +22,7 @@ module.exports = {
         'apricot-peach': '#FBC9AA',
         'jaffa': '#E98143',
         'brandy-rose': '#BD8787',
+        'brandy-rose-light': '#E3CECE',
         'apple-blossom': '#A54242',
         'downriver': '#0B194F',
         'azure': '#3D55B0',
@@ -38,7 +39,7 @@ module.exports = {
       },
       boxShadow: {
         'main': '0px 15px 30px rgba(0, 0, 0, 0.15)',
-        'header': '0px 5px 30px rgba(0, 0, 0, 0.15)',
+        'header': '0px 10px 25px rgba(0, 0, 0, 0.1)',
         'about-right': '6px 7px 4px rgba(0, 0, 0, 0.25)',
         'about-left': '-6px 7px 4px rgba(0, 0, 0, 0.25)',
         'edit-profile': '0px 0px 30px 0px #0000004d',

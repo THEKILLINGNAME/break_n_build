@@ -17,7 +17,7 @@
       <div class="flex justify-between items-center p-3 px-6 h-[3.5rem] even:bg-gray-100">
         <span class="w-[35%] break-words line-clamp-1"><%= product.title %></span>
         <span class="w-[25%]"><%= product.brand.name %></span>
-        <span class="w-[10%]"><%= amount_price %> &#8376;</span>
+        <span class="w-[10%]"><%= amount_price %> &#8376;<!-- тг --></span>
 
         <div class="flex items-center w-[10%] rounded-md border border-gray-300 h-full">
           <%= button_to "-", shopping_cart_remove_from_cart_path(product.id), class: "w-full h-full text-lg", form_class: "w-[35%] rounded-l-md bg-white text-center h-full transition-colors hover:bg-brandy-rose hover:text-white", method: :delete %>

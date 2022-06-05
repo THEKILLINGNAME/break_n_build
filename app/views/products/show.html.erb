@@ -1,15 +1,118 @@
-<div class="flex items-center justify-center">
-  <div class="flex items-center w-4/6">
-    <%= @product.title %>
+<div class="flex flex-col items-center justify-center w-full">
 
-    <% @stats.each do |k, v| %>
-      <%= "#{k} #{v}" %>
-    <% end %>
-
-    <% if @cart_products.include?(@product) %>
-      <%= button_to "Удалить из корзины", product_remove_from_cart_path(@product.id), method: :delete %>
-    <% else %>
-      <%= button_to "Добавить в корзину", product_add_to_cart_path(@product) %>
-    <% end %>
+  <div class="flex items-center justify-center w-full bg-brown">
+    <div class="flex items-center py-3 w-4/6">
+      <span class="font-medium text-xl text-white relative after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 before:top-10"><%= @product.title %></span>
+    </div>
   </div>
+
+  <div class="flex flex-col w-4/6 my-4">
+
+    <div class="flex w-full mb-4">
+      <div class="flex">
+        <% if @product.image %>
+          <%= image_tag @product.image_url, class: "rounded-x h-[320px] shadow-header" %>
+        <% else %>
+          <%=
+            image_tag "https://thumbs.dreamstime.com/b/building-tools-hand-drawn-sketch-construction-vector-illustration-building-tools-hand-drawn-sketch-construction-vector-189008948.jpg",
+            class: "h-[320px] rounded-x shadow-header"
+          %>
+        <% end %>
+      </div>
+
+      <div class="flex flex-col justify-between ml-6 grow">
+        <div class="">
+          <div class="flex items-center">
+            <div class="py-2 px-3 rounded-md border-2 border-brown">
+              <span class="font-semibold">Цена</span>
+              <span class="pl-4"><%= @product.price %> &#8376;</span>
+            </div>
+          </div>
+
+          <div class="my-2">
+            <% if @product.stock %>
+              <div class="flex items-center">
+                <span class="mr-1">В наличии</span>
+                <%= svg_tag "images/icons/checkmark-circle-outline.svg", class: "transition-colors duration-300 group-hover:fill-white w-6 h-6" %>
+              </div>
+            <% else %>
+              <span>Не в наличии</span>
+            <% end %>
+          </div>
+
+          <div class="flex">
+            <% if @product.stock %>
+              <% if @cart_products.include?(@product) %>
+                <%= button_to product_remove_from_cart_path(@product.id), method: :delete, class: "flex items-center bg-brown py-2 px-4 rounded-md text-white hover:bg-dark-brown font-medium" do %>
+                  <span class="mr-2">Удалить из корзины</span>
+                  <%= svg_tag "images/icons/bag-remove-outline.svg", class: "transition-colors duration-300 group-hover:fill-white w-6 h-6" %>
+                <% end %>
+              <% else %>
+                <%= button_to product_add_to_cart_path(@product), class: "flex items-center bg-brown py-2 px-4 rounded-md text-white hover:bg-dark-brown font-medium" do %>
+                  <span class="mr-2">Добавить в корзину</span>
+                  <%= svg_tag "images/icons/bag-add-outline.svg", class: "transition-colors duration-300 group-hover:fill-white w-6 h-6" %>
+                <% end %>
+              <% end %>
+            <% else %>
+              <%= button_to root_path, options = { disabled: true, class: "flex items-center cursor-default bg-gray-500 py-2 px-4 rounded-md text-white font-medium opacity-70" } do %>
+                <span class="mr-2">Добавить в корзину</span>
+                <%= svg_tag "images/icons/bag-add-outline.svg", class: "transition-colors duration-300 group-hover:fill-white w-6 h-6" %>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-semibold mb-2">Основная информация</span>
+
+          <div class="flex flex-col text-white">
+            <div class="bg-brown rounded-md mb-2 p-2 pl-4">
+              <div class="flex w-[75%] justify-between">
+                <span class="font-semibold">Вес:</span>
+                <span class="">999кг</span>
+              </div>
+            </div>
+
+            <div class="bg-brown rounded-md mb-2 p-2 pl-4">
+              <div class="flex w-[75%] justify-between">
+                <span class="font-semibold">Бренд:</span>
+                <span class=""><%= @product.brand.name %></span>
+              </div>
+            </div>
+
+            <div class="bg-brown rounded-md p-2 pl-4">
+              <div class="flex w-[75%] justify-between">
+                <span class="font-semibold">Категория:</span>
+                <span class=""><%= @category %></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex flex-col">
+      <span class="font-semibold mb-2">Описание</span>
+      <span class="bg-gray-100 p-4 rounded-md mb-4"><%= @product.description %> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nostrum voluptatibus vel mollitia officia corporis impedit doloribus obcaecati, magni labore esse, possimus nesciunt atque molestias quis provident itaque explicabo hic temporibus.
+      Est eligendi vero ipsa ea autem repudiandae, dignissimos reprehenderit tempore voluptas error, aliquid quos. Nostrum aspernatur exercitationem veritatis dolorum necessitatibus, corporis culpa laborum nesciunt obcaecati voluptas, vero numquam nisi sunt.
+      Laudantium, dolorum cumque? Quaerat aliquam dolorum, et iure, quod adipisci recusandae, eos enim voluptates odit laudantium voluptatum consequatur voluptate accusantium provident. Facere mollitia expedita, aut laudantium possimus ipsum ipsa consectetur? </span>
+    </div>
+
+    <div class="flex flex-col">
+      <span class="font-semibold mb-2">Технические характеристики</span>
+
+      <div class="flex flex-col text-white">
+        <% @stats.each do |key, value| %>
+          <div class="bg-brown rounded-md mb-2 p-2 pl-4">
+            <div class="flex w-[45%] justify-between">
+              <span class="font-semibold"><%= key %>:</span>
+              <span><%= value %></span>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
 </div>
