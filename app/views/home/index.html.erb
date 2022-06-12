@@ -1,16 +1,16 @@
 <%# -----Meeting section----- %>
 <div id="meeting" class="flex justify-center items-center flex-col h-[calc(100vh-4rem)] w-full border-b-2 border-brandy-rose">
 
-  <div class="flex items-center h-screen w-full">
-    <div class="flex flex-col items-center justify-center w-2/5 h-full font-train text-6xl uppercase text-brandy-rose bg-mine-shaft">
+  <div class="flex flex-col-reverse lg:flex-row items-center h-screen w-full">
+    <div class="flex flex-col items-center justify-center w-full xl:w-2/5 h-full font-train text-4xl lg:text-5xl xl:text-6xl uppercase text-brandy-rose bg-mine-shaft">
       <span>Break'n'build</span>
-      <span class="font-sans font-medium text-2xl my-2">Самые лучшие инструменты</span>
+      <span class="text-center lg:text-left font-sans font-medium text-xl my-2 px-2 lg:px-0">Самые лучшие инструменты</span>
       <div class="flex items-center justify-center group mt-5">
-        <div class="h-px w-20 bg-gradient-to-l from-white to-transparent transition-all duration-300 group-hover:w-0"></div>
+        <div class="h-px w-14 xl:w-20 bg-gradient-to-l from-white to-transparent transition-all duration-300 group-hover:w-0"></div>
         <%=
           link_to "Открыть каталог", products_path,
             class:"bg-transparent border border-white border-solid " \
-                  "rounded-md font-sans font-bold text-2xl " \
+                  "rounded-md font-sans font-bold text-[18px] sm:text-2xl " \
                   "text-white uppercase px-5 py-3 " \
                   "ease-in-out delay-200 duration-200 " \
                   "outline outline-2 outline-transparent " \
@@ -18,41 +18,25 @@
                   "group-hover:border-white group-hover:bg-white " \
                   "group-hover:text-mine-shaft"
         %>
-        <div class="h-px w-20 bg-gradient-to-r from-white to-transparent transition-all duration-300 group-hover:w-0"></div>
+        <div class="h-px w-14 xl:w-20 bg-gradient-to-r from-white to-transparent transition-all duration-300 group-hover:w-0"></div>
       </div>
     </div>
 
-    <div class="w-3/5 bg-worker bg-cover bg-no-repeat bg-center h-full"></div>
+    <div class="w-full xl:w-3/5 bg-worker bg-cover bg-no-repeat bg-center h-full"></div>
   </div>
 
 </div>
 
 <%# -----Novelties section----- %>
 <div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
-  <div class="flex items-center justify-between w-4/6">
-    <span class="relative uppercase font-sans font-bold text-2xl text-white after:w-180 after:h-1 after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 before:top-10">Новинки</span>
+  <div class="flex items-center justify-between w-full mx-4 md:w-4/6 md:mx-0">
+    <span class="relative uppercase font-sans font-bold text-2xl text-white after:w-40 md:after:w-180 after:h-1 after:bg-white after:absolute after:left-0 after:top-9 before:w-40 md:before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 before:top-10">Новинки</span>
     <%= link_to "Смотреть все", products_path, class: "uppercase font-sans font-semibold tracking-wide text-sm bg-brown text-white py-1.5 hover:px-3 rounded hover:bg-white hover:cursor-pointer hover:text-brown focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition-all duration-150 ease-in-out flex items-center" %>
   </div>
 </div>
 
 <div class="flex items-center justify-center">
-  <div class="flex items-center justify-between w-4/6">
-    <% @products.each do |product| %>
-      <%= render "home_product", product: product %>
-    <% end %>
-  </div>
-</div>
-
-<%# -----Bestsellers section----- %>
-<div class="my-10 flex items-center justify-center bg-brown shadow-main h-12 w-full">
-  <div class="flex items-center justify-between w-4/6">
-    <span class="uppercase font-sans font-bold text-2xl text-white relative after:w-180 after:h-[4px] after:bg-white after:absolute after:left-0 after:top-9 before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 before:top-10">Бестселлер</span>
-    <%= link_to "Смотреть все", products_path, class: "uppercase font-sans font-semibold tracking-wide text-sm bg-brown text-white p-1.5 hover:px-3 rounded hover:bg-white hover:cursor-pointer hover:text-brown focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition-all duration-150 ease-in-out flex items-center" %>
-  </div>
-</div>
-
-<div class="flex items-center justify-center">
-  <div class="flex items-center justify-between w-4/6">
+  <div class="flex flex-col 1xl:flex-row items-center justify-between w-full 1xl:w-4/6">
     <% @products.each do |product| %>
       <%= render "home_product", product: product %>
     <% end %>
@@ -67,18 +51,20 @@
     </div>
   </div>
 
-  <div class="flex items-center justify-center py-24">
-    <div class="flex items-center justify-between w-4/5">
-      <span class="text-azure text-lg w-[42%]">Lorem ipsum dolor sit amet consectetur adipisicing elit. Id totam saepe incidunt aperiam veritatis expedita tenetur, illum minus optio quisquam aut, minima consequatur. Repudiandae quam praesentium obcaecati doloremque quidem eveniet?
-      Unde voluptatum doloribus aut eligendi veritatis magni excepturi ullam fugit. Omnis, beatae laudantium dicta quaerat sint aspernatur quidem ipsa reiciendis alias ipsum, nihil distinctio. Quas sint adipisci corporis eaque alias?</span>
-      <img class="rounded-x shadow-about-right skew-x-[-.4deg]" src="https://picsum.photos/seed/1/560/300" alt="">
+  <div class="flex items-center justify-center py-16 2xl:py-24">
+    <div class="flex flex-col-reverse xl:flex-row items-center justify-between w-4/5">
+      <span class="text-azure text-lg xl:w-[42%]">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Id totam saepe incidunt aperiam veritatis expedita tenetur, illum minus optio quisquam aut, minima consequatur. Repudiandae quam praesentium obcaecati doloremque quidem eveniet?
+        Unde voluptatum doloribus aut eligendi veritatis magni excepturi ullam fugit. Omnis, beatae laudantium dicta quaerat sint aspernatur quidem ipsa reiciendis alias ipsum, nihil distinctio. Quas sint adipisci corporis eaque alias?
+      </span>
+      <img class="rounded-x shadow-about-right skew-x-[-.4deg] mb-8" src="https://picsum.photos/seed/1/560/300" alt="">
     </div>
   </div>
 
-  <div class="flex items-center justify-center bg-seashell py-24">
-    <div class="flex items-center justify-between w-4/5">
-      <img class="rounded-x shadow-about-left skew-x-[.4deg]" src="https://picsum.photos/seed/2/560/300" alt="">
-      <span class="text-azure text-lg w-[42%]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis ratione veritatis quod ipsam. Cum, voluptatum? Blanditiis expedita debitis illo, magni consequuntur tempore accusamus. Vero vel quasi facere beatae incidunt sed.</span>
+  <div class="flex items-center justify-center bg-seashell py-16 2xl:py-24">
+    <div class="flex flex-col items-center justify-between xl:flex-row w-4/5">
+      <img class="rounded-x shadow-about-left skew-x-[.4deg] mb-8" src="https://picsum.photos/seed/2/560/300" alt="">
+      <span class="text-azure text-lg xl:w-[42%]">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis ratione veritatis quod ipsam. Cum, voluptatum? Blanditiis expedita debitis illo, magni consequuntur tempore accusamus. Vero vel quasi facere beatae incidunt sed.</span>
     </div>
   </div>
 </div>
@@ -91,22 +77,23 @@
     </div>
   </div>
   <div class="flex items-center justify-center">
-    <div class="flex items-center justify-between w-4/6 py-3">
-      <div class="flex items-center w-3/4 h-[72px] relative before:bg-gray-300 before:w-1 before:h-full before:rounded-l-full before:opacity-[100%] before:absolute before:-left-2">
-        <div id="reviews" class="w-full">
-          <span data-number="1" class="w-full break-words font-light text-downriver hidden">11111111111111111111111111111111111</span>
-          <span data-number="2" class="w-full break-words font-light text-downriver hidden">22222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222222</span>
-          <span data-number="3" class="w-full break-words font-light text-downriver">33333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333333</span>
-          <span data-number="4" class="w-full break-words font-light text-downriver hidden">44444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444444</span>
-          <span data-number="5" class="w-full break-words font-light text-downriver hidden">55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555</span>
+    <div class="flex items-center justify-between flex-col xl:flex-row w-4/6 py-3">
+      <div class="flex items-center mt-4 w-full xl:w-3/4 relative before:bg-gray-300 before:w-1 before:h-[calc(100%+15px)] before:rounded-l-full before:opacity-[100%] before:absolute before:-left-2">
+        <div id="reviews" class="flex items-center w-full">
+          <span data-number="1" class="w-full break-words font-light text-downriver hidden">1. Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor incidunt ut laborum, quaerat, voluptatibus debitis quo blanditiis similique sit itaque temporibus expedita quis fugit voluptatum. Dolorem culpa unde voluptatum sint!</span>
+          <span data-number="2" class="w-full break-words font-light text-downriver hidden">2. Lorem ipsum dolor sit, amet consectetur adipisicing elit. A sed, odio tenetur iste quos voluptatibus cupiditate sunt, et earum quas ipsum similique voluptatum velit asperiores minima, eveniet eum distinctio molestias?</span>
+          <span data-number="3" class="w-full break-words font-light text-downriver">3. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Consectetur magnam animi rem, nobis laboriosam perspiciatis hic similique? Dolore blanditiis, culpa veniam quia autem, aspernatur eligendi ab perferendis, repellendus eius eveniet!</span>
+          <span data-number="4" class="w-full break-words font-light text-downriver hidden">4. Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia, dolore. Tempore voluptatum dolore nulla perferendis quia quis necessitatibus incidunt nemo libero tenetur obcaecati itaque et, dolorem animi ipsum architecto sit?</span>
+          <span data-number="5" class="w-full break-words font-light text-downriver hidden">5. Lorem ipsum dolor sit, amet consectetur adipisicing elit. In enim quos ex magnam modi iste odit ratione adipisci amet sed, tempore explicabo rem dicta delectus assumenda error expedita quisquam? Corrupti.
+          Alias vero reiciendis, rem corrupti incidunt voluptatem quos quia repudiandae nostrum libero possimus placeat nesciunt voluptatum consectetur sed neque molestias necessitatibus. Nam perferendis quas, quisquam cupiditate illo optio vel nulla?</span>
         </div>
       </div>
-      <div id="users" class="flex flex-col items-center justify-center text-[#8E8E8E] font-regular uppercase py-4">
-        <span data-number="1" class="mb-4 text-sm cursor-pointer">Юзернейм</span>
-        <span data-number="2" class="mb-4 text-sm cursor-pointer">Юзернейм</span>
-        <span data-number="3" class="mb-4 text-sm cursor-pointer text-downriver text-base">Юзернейм</span>
-        <span data-number="4" class="mb-4 text-sm cursor-pointer">Юзернейм</span>
-        <span data-number="5" class="text-sm cursor-pointer">Юзернейм</span>
+      <div id="users" class="flex flex-col md:flex-row xl:flex-col items-center justify-center text-[#8E8E8E] font-regular uppercase my-4">
+        <span data-number="1" class="my-2 md:mx-2 md:my-0 xl:mx-0 xl:my-2 text-sm cursor-pointer">Юзернейм</span>
+        <span data-number="2" class="my-2 md:mx-2 md:my-0 xl:mx-0 xl:my-2 text-sm cursor-pointer">Юзернейм</span>
+        <span data-number="3" class="my-2 md:mx-2 md:my-0 xl:mx-0 xl:my-2 text-sm cursor-pointer text-downriver text-base">Юзернейм</span>
+        <span data-number="4" class="my-2 md:mx-2 md:my-0 xl:mx-0 xl:my-2 text-sm cursor-pointer">Юзернейм</span>
+        <span data-number="5" class="my-2 md:mx-2 md:my-0 xl:mx-0 xl:my-2 text-sm cursor-pointer">Юзернейм</span>
       </div>
     </div>
   </div>

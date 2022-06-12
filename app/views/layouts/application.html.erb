@@ -15,17 +15,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Train+One&display=swap" rel="stylesheet">
   </head>
-  <body data-controller="main" class="min-h-screen relative pb-80">
+  <body data-controller="main" class="min-h-screen relative pb-[700px] xl:pb-80">
     <header class="z-40 flex items-center justify-center fixed top-0 w-full h-16 bg-mine-shaft py-2 border-b-2 border-transparent">
-      <div class="flex items-center justify-between w-4/6">
+      <div class="flex items-center justify-between w-full md:w-4/6">
 
         <div class="flex items-center font-sans font-medium text-white">
-          <span>LOGO</span>
-          <%= link_to "Главная", root_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
-          <%= link_to "Каталог", products_path, class: "mx-5 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
+          <%= link_to "Главная", root_path, class: "text-base mx-4 md:mr-4 md:ml-0 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
+          <%= link_to "Каталог", products_path, class: "text-base ml-4 md:ml-4 font-bold tracking-wide relative after:absolute after:transition-[width] after:ease-out after:duration-500 after:w-0 after:h-0.5 after:bg-brandy-rose after:-bottom-1 after:left-0 after:hover:w-full after:hover:opacity-100" %>
         </div>
 
-        <div class="flex items-center justify-between w-1/5">
+        <div class="flex items-center justify-between mr-3 md:mr-0 w-[7rem] md:w-[10rem]">
           <%= link_to shopping_cart_index_path, class: "relative w-12" do %>
             <%= svg_tag "/images/icons/cart.svg", class:"h-12 w-10" %>
             <span class="text-sm bg-brandy-rose border-2 border-white text-white min-w-[22px] px-1 absolute top-0 right-0 rounded text-center">
@@ -47,7 +46,7 @@
       </div>
     </header>
 
-    <div class="z-50 flex flex-col items-center justify-center w-full fixed top-[63px]">
+    <div class="z-50 flex flex-col items-center justify-center w-screen fixed top-[63px]">
       <% if notice %>
         <p class="notice bg-emerald-100 w-2/5 border border-t-4 border-emerald-500 text-emerald-900 py-2 px-4 last:rounded-b-md break-words"><%= notice %></p>
       <% end %>
@@ -65,57 +64,62 @@
 
     <%= yield %>
 
-    <footer class="flex items-center justify-center bg-mine-shaft text-brandy-rose py-10 absolute bottom-0 w-full h-80">
-      <div class="flex flex-col justify-around w-4/5 text-sm">
+    <footer class="flex items-center justify-center bg-mine-shaft text-brandy-rose absolute h-[700px] xl:h-80 bottom-0 w-full py-10">
+      <div class="w-full lg:w-4/5 h-full text-sm">
 
-        <div class="flex justify-between">
-          <div class="w-80">
-            <span class="font-train text-[40px] leading-[46px] uppercase">Break'n'build</span>
+        <div class="flex flex-col xl:flex-row justify-between items-center h-full">
+          <div class="flex flex-col justify-between w-80 mb-4 xl:mb-0">
+            <span class="font-train text-4xl sm:text-[40px] sm:leading-[46px] uppercase h-[46px]">Break'n'build</span>
+            <span class="text-sm font-normal h-20">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut turpis egestas, imperdiet ligula a, ultrices mauris
+            </span>
+            <div class="flex justify-between items-end h-20">
+              <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
+                <%= svg_tag "/images/icons/logo-vk.svg", class:"w-20 h-16 border-2 border-white rounded-md p-2" %>
+                <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">
+                  Вконтакте
+                </span>
+              <% end %>
+              <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
+                <%= svg_tag "/images/icons/logo-instagram.svg", class:"w-20 h-16 border-2 border-white rounded-md p-2" %>
+                <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">
+                  Инстаграм
+                </span>
+              <% end %>
+              <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
+                <%= svg_tag "/images/icons/logo-github.svg", class:"w-20 h-16 border-2 border-white rounded-md p-2" %>
+                <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">
+                  Github
+                </span>
+              <% end %>
+            </div>
           </div>
-          <div class="font-bold text-2xl w-80 uppercase"><span>Контакты</span></div>
-          <div class="font-bold text-2xl w-80 uppercase"><span>Новости</span></div>
-        </div>
 
-        <div class="flex justify-between my-2">
-          <div class="w-80">
-            <span>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam ut turpis egestas, imperdiet ligula a, ultrices mauris.</span>
+          <div class="flex flex-col justify-between font-bold text-2xl w-80 uppercase">
+            <span class="h-[46px]">Контакты</span>
+            <div class="text-sm font-normal normal-case">
+              <p>Адрес: Lorem ipsum dolor sit amet</p>
+              <div class="flex flex-col">
+                <span>Тех. поддрежка:</span>
+                <span class="pl-3">— +7 123 456 78 90</span>
+                <span class="pl-3">— help@shop.com</span>
+              </div>
+            </div>
+            <div class="h-0 xl:h-20"></div>
           </div>
-          <div class="w-80">
-            <p>Адрес: Lorem ipsum dolor sit amet</p>
-            <p class="flex flex-col">
-              Тех. поддрежка:
-              <span class="pl-3">— +7 123 456 78 90</span>
-              <span class="pl-3">— help@shop.com</span>
+
+          <div class="flex flex-col justify-between font-bold text-2xl w-80 uppercase">
+            <span class="h-[46px]">Новости</span>
+            <p class="flex text-sm font-normal normal-case h-20">
+              Мы будем вам высылать информацию о новинках, скидках и интересных предложениях
             </p>
-          </div>
-          <div class="w-80">
-            <p>Мы будем вам высылать информацию о новинках, скидках и интересных предложениях</p>
-          </div>
-        </div>
-
-        <div class="flex justify-between h-16 mt-3">
-          <div class="flex justify-between w-80">
-            <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
-              <%= svg_tag "/images/icons/logo-vk.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
-              <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">Вконтакте</span>
-            <% end %>
-            <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
-              <%= svg_tag "/images/icons/logo-instagram.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
-              <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">Инстаграм</span>
-            <% end %>
-            <%= link_to root_path, class:"flex flex-col items-center relative group" do %>
-              <%= svg_tag "/images/icons/logo-github.svg", class:"w-20 border-2 border-white rounded-md p-2" %>
-              <span class="uppercase font-extrabold text-[10px] text-white absolute -bottom-1 opacity-0 group-hover:-bottom-5 group-hover:opacity-100 transition-all duration-400">Github</span>
-            <% end %>
-          </div>
-
-          <div class="flex w-80 text-">
-            <%= link_to edit_user_registration_path, class:"flex items-center justify-center text-white border-2 border-white rounded-md p-2 cursor-pointer transition-colors hover:border-brandy-rose hover:bg-brandy-rose hover:text-black" do %>
-              <span class="uppercase font-semibold text-xs">Подписаться</span>
-            <% end %>
+            <div class="flex items-end w-80 h-20">
+              <%= link_to edit_user_registration_path, class:"flex items-center justify-center h-16 text-white border-2 border-white rounded-md p-2 cursor-pointer transition-colors hover:border-brandy-rose hover:bg-brandy-rose hover:text-black" do %>
+                <span class="uppercase font-semibold text-xs">Подписаться</span>
+              <% end %>
+            </div>
           </div>
         </div>
-
       </div>
     </footer>
   </body>

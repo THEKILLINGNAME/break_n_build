@@ -1,7 +1,7 @@
 <div class="flex flex-col items-center h-[560px] text-white">
   <div class="flex flex-col justify-center items-center h-full">
 
-    <div class="flex flex-col items-center bg-mine-shaft px-10 py-9 rounded-lg">
+    <div class="flex flex-col items-center bg-mine-shaft px-5 py-4 sm:px-10 sm:py-9 rounded-lg">
       <h2 class="font-bold text-lg mb-4">Авторизация</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "flex flex-col w-[300px]" }) do |f| %>
@@ -15,7 +15,6 @@
           <%= f.password_field :password, autocomplete: "current-password", placeholder: "Пароль", class: "relative peer bg-transparent rounded border-2 border-brandy-rose text-white transition-colors placeholder-shown:border-white focus:border-brandy-rose focus:ring-0 focus:outline-0 w-full" %>
           <%= f.label :password, class: "text-brandy-rose text-sm mb-1 absolute bottom-10 -left-[1px] transition-opacity peer-placeholder-shown:opacity-0" %>
         </div>
-        <%= link_to "Забыли пароль?", new_password_path(resource_name), class: "text-white text-sm transition-colors hover:text-brandy-rose mt-0.5" %>
 
         <% if devise_mapping.rememberable? %>
           <div class="field flex items-center my-4">

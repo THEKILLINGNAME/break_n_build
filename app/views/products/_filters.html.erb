@@ -1,20 +1,20 @@
 <div class="flex flex-col items-center justify-center py-6 bg-[#E9E9E9] text-black">
-  <div class="flex text-sm w-4/6">
+  <div class="flex justify-center md:justify-start text-sm w-4/6">
 
     <div class="flex flex-col">
-      <span class="flex items-center">
-        Поиск:
-        <%= search_form_for(@query, method: :get, class: "flex items-center") do |f| %>
-          <%= f.text_field :title_or_brand_name_i_cont_any, placeholder: "Название или бренд", class: "rounded text-[13px] text-gray-700 p-1 ml-2 focus:ring-transparent focus:border-orange-900" %>
-          <%= f.text_field :price_gteq, placeholder: "Цена", class: "rounded text-[13px] text-gray-700 p-1 ml-2 focus:ring-transparent focus:border-orange-900" %>
-          <%= f.submit "Найти", class: "px-4 h-[34px] ml-2 bg-brown text-white font-medium text-xs uppercase rounded shadow-md hover:bg-dark-brown hover:cursor-pointer focus:bg-dark-brown focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition duration-150 ease-in-out flex items-center" %>
+      <div class="flex flex-col md:flex-row justify-between md:items-center">
+        <span class="mb-2 md:mb-0">Поиск:</span>
+        <%= search_form_for(@query, method: :get, class: "flex flex-col md:flex-row") do |f| %>
+          <%= f.text_field :title_or_brand_name_i_cont_any, placeholder: "Название или бренд", class: "mb-3 md:mb-0 rounded text-[13px] text-gray-700 p-1 md:ml-2 focus:ring-transparent focus:border-orange-900" %>
+          <%= f.text_field :price_gteq, placeholder: "Цена", class: "mb-3 md:mb-0 rounded text-[13px] text-gray-700 p-1 md:ml-2 focus:ring-transparent focus:border-orange-900" %>
+          <%= f.submit "Найти", class: "flex justify-center items-center px-4 h-[34px] md:ml-2 bg-brown text-white font-medium text-xs uppercase rounded shadow-md hover:bg-dark-brown hover:cursor-pointer focus:bg-dark-brown focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition duration-150 ease-in-out flex items-center" %>
         <% end %>
-      </span>
+      </div>
 
       <% if @category || @show_count %>
-        <div class="flex items-center justify-between w-full mt-2">
-          <span class="text-base">Количество результатов: <%= @products.count %></span>
-          <%= button_to "Сбросить все", delete_category_path, method: :delete, class: "flex items-center px-4 h-[34px] bg-gray-400 text-white font-medium text-xs uppercase rounded shadow-md hover:bg-gray-600 hover:cursor-pointer focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition duration-150 ease-in-out" %>
+        <div class="flex items-center justify-between w-full mt-3">
+          <span class="w-[50%] text-base">Количество результатов: <%= @products.count %></span>
+          <%= button_to "Сбросить все", delete_category_path, method: :delete, class: "flex items-center px-2 md:px-4 h-[34px] bg-gray-400 text-white font-medium text-xs uppercase rounded shadow-md hover:bg-gray-600 hover:cursor-pointer focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition duration-150 ease-in-out" %>
         </div>
       <% end %>
     </div>

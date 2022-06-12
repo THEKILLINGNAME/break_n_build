@@ -50,6 +50,9 @@ module.exports = {
       backgroundImage: {
         'worker': "url('jeriden-villegas-VLPUm5wP5Z0-unsplash.jpg')",
       },
+      screens: {
+        '1xl': '1344px',
+      },
     },
   },
   plugins: [

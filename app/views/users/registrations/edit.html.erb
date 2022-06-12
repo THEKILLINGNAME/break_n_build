@@ -1,28 +1,28 @@
-<div class="flex flex-col items-center justify-center h-[560px]">
+<div class="flex flex-col items-center justify-center h-[660px] md:h-[560px]">
 
   <div class="flex items-center justify-center bg-brown h-14 w-full">
-    <div class="flex items-center justify-between w-4/6 relative">
-      <h2 class="relative uppercase font-sans font-bold text-2xl text-white after:w-180 after:h-1 after:bg-white after:absolute after:left-0 after:top-[38px] before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 before:top-[42px]">Редактирование профиля</h2>
+    <div class="flex items-center justify-between w-full md:w-4/6 relative mx-3 after:w-180 after:h-1 after:bg-white after:absolute after:left-0 after:top-[52px] sm:after:top-[37px] before:w-180 before:h-1 before:bg-brown before:absolute before:left-0 sm:before:top-[42px] before:top-[56px]">
+      <h2 class="flex items-center uppercase font-sans font-bold text-xl md:text-2xl text-white w-[20%] sm:w-auto">Редактирование профиля</h2>
       <%= link_to "Назад", :back, class: "uppercase font-sans font-semibold tracking-wide text-sm bg-brown text-white py-1.5 hover:px-3 rounded hover:bg-white hover:cursor-pointer hover:text-brown focus:outline-none focus:ring-0 active:bg-brown active:shadow-lg transition-all duration-150 ease-in-out flex items-center" %>
     </div>
   </div>
 
-  <div class="flex flex-col justify-center w-4/6 h-full">
+  <div class="flex flex-col items-center md:items-start justify-center w-full md:w-4/6 h-full">
 
     <%= form_for(
       resource, as: resource_name,
       url: registration_path(resource_name),
-      html: { method: :put, class: "flex flex-col justify-center mt-6" }
+      html: { method: :put, class: "flex flex-col justify-center w-full md:w-full mt-6 px-3 md:px-0" }
     ) do |f| %>
 
-      <div class="field flex flex-col mb-4">
+      <div class="field flex flex-col mb-6 md:mb-4">
         <%= f.label :email %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-72 rounded focus:ring-brown focus:border-brown" %>
       </div>
 
-      <div class="flex items-center mb-4 w-[80%]">
+      <div class="flex flex-col md:flex-row md:items-center mb-4 w-[80%]">
 
-        <div class="flex flex-col mr-8">
+        <div class="flex flex-col md:mr-8 mb-4 md:mb-0">
           <%= f.label :password %>
           <%= f.password_field :password, autocomplete: "new-password", class: "w-72 rounded focus:ring-brown focus:border-brown" %>
           <% if @minimum_password_length %>
@@ -33,7 +33,7 @@
         <div class="flex flex-col items-start">
           <%= f.label :password_confirmation %>
           <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "w-72 rounded focus:ring-brown focus:border-brown" %>
-          <div class="h-5"></div>
+          <div class="hidden md:block h-5"></div>
         </div>
 
       </div>
@@ -60,7 +60,7 @@
       </div>
     <% end %>
 
-    <div class="flex justify-between w-full mt-6">
+    <div class="flex justify-between w-full md:w-full mt-6 px-3 md:px-0">
       <%= button_to destroy_user_session_path, method: :delete, form_class: "flex", class: "flex items-center p-2 pl-0 font-medium rounded cursor-pointer transition-all duration-300 hover:pl-2 hover:bg-brown hover:text-white" do %>
         <span class="relative mr-2">Выйти</span>
         <%= svg_tag "images/icons/log-out-outline.svg", class: "w-6 h-6" %>

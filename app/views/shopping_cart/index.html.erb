@@ -1,11 +1,12 @@
 <div class="flex items-center justify-center">
-  <div class="flex flex-col w-4/6">
-    <div class="flex justify-between font-semibold p-3 px-6 bg-brandy-rose text-white">
-      <span class="w-[35%]">Название</span>
-      <span class="w-[25%]">Бренд</span>
-      <span class="w-[10%]">Цена</span>
-      <span class="w-[10%]">Количество</span>
-      <span class="w-[10%]"></span>
+  <div class="flex flex-col w-full xl:w-4/6">
+    <div class="flex justify-between font-semibold p-3 px- lg:px-6 bg-brandy-rose text-white">
+      <span class="w-[25%]">Название</span>
+      <span class="w-[25%] hidden md:block">Бренд</span>
+      <span class="lg:w-[20%] w-[15%]">Цена</span>
+      <span class="w-[25%] md:w-[10%] hidden sm:block">Количество</span>
+      <span class="w-[25%] block sm:hidden">Кол-во.</span>
+      <span class="lg:w-[10%] w-[10%]"></span>
     </div>
 
     <% cart_price = 0 %>
@@ -14,19 +15,21 @@
       <% amount_price = product.price * amount %>
       <% cart_price += amount_price %>
 
-      <div class="flex justify-between items-center p-3 px-6 h-[3.5rem] even:bg-gray-100">
-        <span class="w-[35%] break-words line-clamp-1"><%= product.title %></span>
-        <span class="w-[25%]"><%= product.brand.name %></span>
-        <span class="w-[10%]"><%= amount_price %> &#8376;<!-- тг --></span>
+      <div class="flex justify-between items-center p-3 lg:px-6 h-[3.5rem] even:bg-gray-100">
+        <%= link_to product_path(product.id), class: "w-[25%]" do %>
+          <span class="break-words line-clamp-2 md:line-clamp-1 text-blue-700 md:text-black"><%= product.title %></span>
+        <% end %>
+        <span class="w-[25%] md:break-words md:line-clamp-2 md:block hidden"><%= product.brand.name %></span>
+        <span class="lg:w-[20%] w-[15%]"><%= amount_price %>&#8376;<!-- тг --></span>
 
-        <div class="flex items-center w-[10%] rounded-md border border-gray-300 h-full">
+        <div class="flex items-center w-[25%] md:w-[10%] rounded-md border border-gray-300 h-full">
           <%= button_to "-", shopping_cart_remove_from_cart_path(product.id), class: "w-full h-full text-lg", form_class: "w-[35%] rounded-l-md bg-white text-center h-full transition-colors hover:bg-brandy-rose hover:text-white", method: :delete %>
           <span class="flex justify-center items-center w-[30%] h-full bg-white border-x border-gray-300"><%= amount %></span>
           <%= button_to "+", shopping_cart_add_to_cart_path(product.id), class: "w-full h-full text-lg", form_class: "w-[35%] rounded-r-md bg-white text-center h-full transition-colors hover:bg-brandy-rose hover:text-white", method: :post %>
         </div>
 
         <div class="flex items-center justify-end w-[10%]">
-          <%= link_to product_path(product.id), class: "flex justify-end items-center mr-2", method: :delete do %>
+          <%= link_to product_path(product.id), class: "flex justify-end items-center mr-2 hidden md:block" do %>
             <%= svg_tag "/images/icons/eye-outline.svg", class: "w-[1.5rem] h-[1.5rem] text-gray-400 transition-colors hover:text-brandy-rose" %>
           <% end %>
           <%= button_to shopping_cart_delete_from_cart_path(product.id), class: "", form_class: "flex justify-end items-center", method: :delete do %>
@@ -36,10 +39,10 @@
       </div>
     <% end %>
 
-    <div class="flex flex-col items-end my-2">
+    <div class="flex flex-col items-center lg:items-end my-2">
       <% if @cart_products.present? %>
-        <span class="mb-2">Цена заказа: <%= cart_price %> &#8376;</span>
-        <%= link_to shopping_cart_place_order_path, class: "flex items-center p-2 px-4 pr-0 rounded-md font-medium text-black transition-all duration-300 hover:bg-brandy-rose hover:text-white hover:pr-4" do %>
+        <span class="mb-2">Цена заказа: <%= cart_price %>&#8376;</span>
+        <%= link_to shopping_cart_place_order_path, class: "flex items-center p-2 px-4 lg:pr-0 rounded-md font-medium text-black transition-all duration-300 hover:bg-brandy-rose hover:text-white hover:pr-4" do %>
           <span>Оформить заказ</span>
           <%= svg_tag "/images/icons/bag-check-outline.svg", class: "w-[1.4rem] h-[1.4rem] ml-2" %>
         <% end %>

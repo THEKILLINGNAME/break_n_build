@@ -1,9 +1,9 @@
-<div class="flex flex-col items-center justify-between rounded-x border border-solid border-silver w-[32%] group relative">
+<div class="flex flex-col items-center justify-between md:rounded-x border-y md:border md:border-solid border-silver w-[100%] md:w-[50%] 1xl:w-[32%] group relative mb-6">
   <%= image_tag "https://thumbs.dreamstime.com/b/building-tools-hand-drawn-sketch-construction-vector-illustration-building-tools-hand-drawn-sketch-construction-vector-189008948.jpg", class: "rounded-t-x h-80" %>
-  <div class="flex items-center bg-[#9e4f1ea4] w-full h-80 absolute rounded-t-lg shadow-inset transition-opacity duration-200 ease-in opacity-0 group-hover:opacity-100">
+  <div class="flex items-center bg-[#9e4f1ea4] w-full h-80 absolute md:rounded-t-lg shadow-inset transition-opacity duration-200 ease-in opacity-0 group-hover:opacity-100">
     <%= link_to "Перейти", product_path(product), class: "flex items-center text-xl font-semibold justify-center mx-auto px-10 py-3 text-white bg-transparent hover:text-dark-brown hover:bg-white transition duration-200 border-2 border-white rounded-lg" %>
   </div>
-  <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown rounded-b-x w-full px-5 py-4">
+  <div class="flex items-center justify-between uppercase bg-alabaster text-dark-brown md:rounded-b-x w-full px-5 py-4">
     <span class="font-sans font-light text-sm truncate grow w-[50%]"><%= product.title %></span>
     <span class="font-sans font-regular text-xl grow text-right"><%= product.price %> &#8376;</span>
   </div>

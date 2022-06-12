@@ -1,7 +1,7 @@
 <div class="flex justify-center">
-  <div class="flex w-4/6">
-    <div class="bg-alabaster flex flex-col justify-center h-[10rem] rounded-x border border-solid border-silver mt-5 px-2">
-      <div class="w-28">
+  <div class="flex flex-col items-center lg:items-start lg:flex-row w-full md:w-4/6">
+    <div class="bg-alabaster flex flex-col justify-center items-center h-[10rem] w-[187px] rounded-x border border-solid border-silver mt-5 px-2">
+      <div class="md:w-28">
         <span class="">Сортировать:</span>
         <%= sort_link(@query, :title, "Название", default_order: :asc, class: "flex items-center mt-[1rem]") %>
         <%= sort_link(@query, :brand, "Бренд", class: "flex items-center") %>
