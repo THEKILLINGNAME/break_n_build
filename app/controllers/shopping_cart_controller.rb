@@ -17,7 +17,6 @@ class ShoppingCartController < ApplicationController
   def remove_from_cart
     id = params[:id]
     amount = session["cart_products"][id]["amount"]
-    price = Product.find(id).price
 
     subtracted_amount = amount - 1
     if subtracted_amount <= 0
@@ -32,6 +31,7 @@ class ShoppingCartController < ApplicationController
   def delete_from_cart
     id = params[:id]
     session["cart_products"].delete(id)
+
     redirect_to shopping_cart_index_path
   end
 
@@ -56,6 +56,7 @@ class ShoppingCartController < ApplicationController
 
     flash[:notice] = "Покупка прошла успешно"
     session["cart_products"] = {}
+
     redirect_to products_path
   end
 
