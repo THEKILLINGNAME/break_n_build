@@ -6,6 +6,7 @@ class Product < ApplicationRecord
   belongs_to :screwdriver_bit_stat, optional: true
   belongs_to :perforator_bit_stat, optional: true
   belongs_to :charger_stat, optional: true
+  has_many   :order_product
 
   validates :title, presence: true
   validates :price, presence: true

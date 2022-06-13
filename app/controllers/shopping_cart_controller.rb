@@ -26,8 +26,6 @@ class ShoppingCartController < ApplicationController
       session["cart_products"][id] = { amount: subtracted_amount }
     end
 
-    @amount_price = price * subtracted_amount
-
     redirect_to shopping_cart_index_path
   end
 
@@ -38,6 +36,24 @@ class ShoppingCartController < ApplicationController
   end
 
   def place_order
+    order_products = session["cart_products"].map do |id, options|
+      OrderProduct.new(
+        product_id: id.to_i,
+        amount: options["amount"]
+      )
+    end
+    order = Order.new(
+      user: current_user,
+      order_products: order_products,
+    )
+
+    ActiveRecord::Base.transaction do
+      order_products.each do |order_product|
+        order_product.save!
+      end
+      order.save!
+    end
+
     flash[:notice] = "Покупка прошла успешно"
     session["cart_products"] = {}
     redirect_to products_path

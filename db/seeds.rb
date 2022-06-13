@@ -7,8 +7,8 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 User.create!(email: "adminn@adminn.com", password: "adminn", admin: true)
-User.create!(email: "111111@gmail.com", password: "111111", admin: true)
-User.create!(email: "oleggg@oleg.com", password: "oleggg", admin: true)
+User.create!(email: "111111@gmail.com", password: "111111", admin: false)
+User.create!(email: "oleggg@oleg.com", password: "oleggg", admin: false)
 
 unknown_brand = Brand.create!(name: "Unknown Brand")
 foo_brand = Brand.create!(name: "Foo Brand")
